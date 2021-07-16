@@ -1,0 +1,38 @@
+.spinner {
+  mix-blend-mode: overlay;
+  position: relative;
+  display: flex;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 25px transparent;
+  margin: auto;
+  .spinner-yellow {
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid var(--light-gray);
+    animation: spin 2s ease-in infinite;
+  }
+
+  .spinner-red {
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid var(--blue);
+    animation: spin 3s ease-out infinite;
+  }
+  .spinner-blue {
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid var(--light-blue);
+    animation: spin 2.8s ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

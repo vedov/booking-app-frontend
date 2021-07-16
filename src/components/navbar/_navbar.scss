@@ -1,0 +1,134 @@
+.navbar-wrapper {
+  box-sizing: border-box;
+  height: 80px;
+  width: 100%;
+  max-width: 100vw;
+  padding: 0 3%;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  font-family: "Coolvetica";
+  .left {
+    display: flex;
+    .navbar-logo {
+      height: 50px;
+    }
+    .navbar-list {
+      display: flex;
+      list-style-type: none;
+      @media only screen and(max-width:992px) {
+        display: none;
+      }
+    }
+  }
+  .right {
+    @media only screen and(max-width:992px) {
+      display: none;
+    }
+  }
+  .hamburger-closed {
+    @media only screen and(max-width:992px) {
+      display: flex;
+    }
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all 0.4s ease;
+    display: none;
+    width: 40px;
+    cursor: pointer;
+    z-index: 2;
+    .line {
+      transition: all 0.4s ease;
+
+      width: 25px;
+      height: 2px;
+      background: white;
+      margin: 5px 0;
+    }
+  }
+  .hamburger-open {
+    @media only screen and(max-width:992px) {
+      display: flex;
+    }
+    transition: all 0.4s ease;
+    display: none;
+    width: 40px;
+    cursor: pointer;
+    z-index: 2;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    .line {
+      width: 25px;
+      border: 1px solid black;
+      background: black;
+      transition: all 0.4s ease;
+      &:first-child {
+        transform: rotate(45deg);
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+      &:last-child {
+        transform: rotate(-45deg);
+        margin-top: -2px;
+      }
+    }
+  }
+  .hamburger-content-hidden {
+    transition: all 0.5s ease-out;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: white;
+    height: 100% !important;
+    width: 0px !important;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    ul {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .hamburger-content-shown {
+    transition: all 0.5s ease;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    background: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ul {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      li {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
+  }
+}
