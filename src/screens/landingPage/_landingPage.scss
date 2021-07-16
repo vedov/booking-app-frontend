@@ -1,0 +1,106 @@
+.landing-page-wrapper {
+  max-width: 100%;
+  box-sizing: border-box;
+  .about-us {
+    margin: 15px 0;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-evenly;
+    @media only screen and (max-width: 1200px) {
+      padding: 0 3%;
+    }
+    @media only screen and (max-width: 992px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .left-side {
+      width: 40%;
+      position: relative;
+      @media only screen and (max-width: 1366px) {
+        width: 45%;
+      }
+      @media only screen and (max-width: 992px) {
+        width: 100%;
+      }
+
+      .images-wrapper {
+        position: relative;
+        width: 500px;
+        @media only screen and (max-width: 1366px) {
+          width: 450px;
+        }
+        @media only screen and (max-width: 992px) {
+          width: 350px;
+        }
+        @media only screen and (max-width: 500px) {
+          width: 250px;
+        }
+        img {
+          width: 100%;
+        }
+        .play-icon {
+          cursor: pointer;
+          width: 80px;
+          height: 80px;
+          position: absolute;
+          top: 30%;
+          left: 50%;
+          filter: invert(38%) sepia(50%) saturate(1251%) hue-rotate(180deg)
+            brightness(91%) contrast(95%)
+            drop-shadow(1px 1px 20px rgb(117, 117, 117));
+        }
+      }
+    }
+    .right-side {
+      width: 40%;
+      font-family: "Coolvetica";
+      @media only screen and (max-width: 1366px) {
+        width: 45%;
+      }
+      @media only screen and (max-width: 992px) {
+        width: 100%;
+      }
+      h6 {
+        color: var(--blue);
+      }
+      h2 {
+        font-weight: 400;
+      }
+      p {
+        font-family: "Lato";
+        letter-spacing: 0.025em;
+      }
+    }
+  }
+  .plans-background {
+    margin-top: 50px;
+    box-sizing: border-box;
+    color: white;
+    span {
+      color: white;
+    }
+    img {
+      width: 100%;
+      margin-bottom: -5px;
+    }
+    img:last-child {
+      transform: rotate(180deg);
+      margin-top: -5px;
+    }
+  }
+  .benefits-background {
+    box-sizing: border-box;
+    h6 {
+      color: var(--blue);
+    }
+    img {
+      width: 100%;
+      margin-bottom: -5px;
+    }
+    img:last-child {
+      transform: rotate(180deg);
+      margin-top: -5px;
+    }
+  }
+}

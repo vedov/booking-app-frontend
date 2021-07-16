@@ -1,0 +1,79 @@
+@import "components/footer/footer";
+@import "components/header/header";
+@import "components/navbar/navbar";
+@import "components/button/button";
+@font-face {
+  font-family: "Coolvetica";
+  src: local("Coolvetica Rg"),
+    url("./assets/coolvetica/coolvetica\ rg.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lato";
+  src: url("./assets/Lato/Lato-Regular.ttf") format("truetype");
+}
+* {
+  box-sizing: border-box;
+}
+:root {
+  --blue: #2370c8;
+  --light-blue: #d3e0f5;
+  --black: #2b2b2b;
+  --lightst-gray: #f2f2f2;
+  --light-gray: #6b6b6b;
+  --gray: #4f4f4f;
+  --light: #bdd4ef;
+  --white: #ffffff;
+  --green: #23c86f;
+  --yellow: #f29f4b;
+  --primary-font: "Coolvetica";
+  --secondary-font: "Lato";
+}
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  @media only screen and (max-width: 1400px) {
+    font-size: 14px;
+  }
+}
+h1 {
+  font-size: 5.25em;
+  font-weight: 900;
+  font-family: "Coolvetica";
+  margin: 10px 0;
+}
+h2 {
+  font-size: 4.25em;
+  font-weight: 600;
+  font-family: "Coolvetica";
+  margin: 10px 0;
+}
+h3 {
+  font-size: 3em;
+  font-weight: 550;
+  font-family: "Coolvetica";
+  margin: 10px 0;
+}
+h4 {
+  font-size: 2.25em;
+  font-weight: 500;
+  font-family: "Coolvetica";
+  margin: 10px 0;
+}
+h5 {
+  font-weight: 450;
+  font-size: 24px;
+  font-family: "Coolvetica";
+  margin: 10px 0;
+}
+h6 {
+  font-weight: 400;
+  font-size: 1.5em;
+  font-family: "Coolvetica";
+  margin: 0;
+}
+p,
+span {
+  font-family: "Lato";
+  font-size: 1.125em;
+}
