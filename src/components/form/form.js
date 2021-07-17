@@ -137,7 +137,7 @@ const Form = (props) => {
               checked={terms}
               onClick={() => setTerms(!terms)}
             ></input>
-            I Agree to Oyers Map
+            I Agree to Bookers
             <a href="/"> Terms Of Service</a> and <a href="/">Privacy Policy</a>
           </label>
         )}
