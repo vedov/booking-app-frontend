@@ -5,6 +5,8 @@
 @import "components/form/form";
 @import "components/input-field/inputField";
 @import "components/navLink/navLink";
+@import "components/findProperty/findProperty";
+@import "components/card/card";
 @import "screens/login/login";
 @import "screens/register/register";
 @import "screens/landingPage/landingPage";
@@ -25,6 +27,7 @@
   --blue: #2370c8;
   --light-blue: #d3e0f5;
   --black: #2b2b2b;
+  --whiteish: #f4f4f4;
   --lightst-gray: #f2f2f2;
   --light-gray: #6b6b6b;
   --gray: #4f4f4f;

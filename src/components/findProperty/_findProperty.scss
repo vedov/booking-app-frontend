@@ -1,0 +1,16 @@
+.find-property-wrapper {
+  display: flex;
+  .find-property-card {
+    display: flex;
+    justify-content: space-around;
+    width: 75vw;
+    margin: auto;
+    //padding: 10px 20px;
+    border-radius: 25px;
+    background-color: var(--white);
+    & > div {
+      margin: 10px;
+      padding: 5px;
+    }
+  }
+}
