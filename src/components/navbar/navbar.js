@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "../button/button";
 import { Link } from "react-router-dom";
-/* import { Link } from "react-router-dom"; */
-/* import Button from "../../Ui/button/button";
-import NavLink from "../../Ui/navLink/navLink";
-import Routes from "../../constants/routes"; */
-/* import jwtDecode from "jwt-decode"; */
+import NavLink from "../navLink/navLink";
+import Routes from "../../constants/routes";
 const Navbar = () => {
+  const routes = [...Routes];
   return (
     <div className="navbar-wrapper">
-      NAVBAR
+      <div className="left">
+        <ul className="navbar-list">
+          {routes &&
+            routes.map((entry) => {
+              return <NavLink route={entry.route}>{entry.title}</NavLink>;
+            })}
+        </ul>
+      </div>
       <div className="right">
         <Link to="/login">
-          <Button variant="1">Login</Button>
-        </Link>
-        <Link to="/register">
-          <Button variant="2">Register</Button>
+          <Button variant="2">Login</Button>
         </Link>
       </div>
     </div>

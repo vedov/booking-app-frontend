@@ -1,33 +1,27 @@
-.register-wrapper {
+.register {
   height: 100vh;
   width: 100%;
-  padding-right: 12%;
   display: flex;
-  box-sizing: border-box;
+  padding-right: 12%;
   @media only screen and (max-width: 768px) {
-    background-color: var(--light-blue);
-    padding: 0;
-    height: unset;
+    padding-right: 0;
     flex-direction: column;
   }
   .left {
-    @media only screen and (max-width: 768px) {
-      display: none;
-      padding: 4%;
-    }
     width: 55%;
     height: 100%;
-    background-image: url(./assets/registerBackground.png);
+    background-image: url(./assets/registerBackground.png),
+      linear-gradient(#fff, #dfeaee);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    flex-direction: column;
     align-items: center;
-
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
     img {
       width: 50%;
-      margin: auto 0 auto -20%;
     }
   }
 }
