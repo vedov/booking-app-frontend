@@ -289,69 +289,29 @@
 //variant 8
 .back-home-button {
   display: flex;
-  width: 250px;
   font-size: 1.25em;
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-
   margin: 20px 0 0 20px;
   align-items: center;
   align-self: flex-start;
   color: white;
-  a,
-  a:visited,
-  a:hover,
-  a:active {
-    text-decoration: none;
-    color: var(--white);
-  }
-  &:before {
-    content: "";
-    display: flex;
-    border-radius: 50px;
-    background: var(--blue);
-    width: 56px;
-    height: 56px;
-    transition: all 0.4s ease;
-  }
-  span {
-    vertical-align: middle;
-    text-align: center;
-    position: absolute;
-    font-family: "Viga";
-    transition: 0.1s all ease-in;
-    visibility: hidden;
-    padding: 0 0 0 20px;
-
-    i {
-      font-size: 18px;
-      visibility: visible;
-      transition: 0.3s all ease-in;
-    }
-  }
-
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease-in;
+  color: var(--white);
+  border: 3px solid var(--yellow);
+  background: var(--yellow);
+  transition: 0.3s;
+  box-shadow: 0px 0px 10px 0px rgba(161, 133, 105, 0.2);
   &:hover {
-    &:before {
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-    i {
-      color: var(--white);
-      transition: 0.3s all ease-in;
-      margin-right: 20px;
-    }
-    span {
-      color: var(--white);
-      transition: all 0.3s ease;
-      visibility: visible;
-    }
-  }
-  &:active {
-    transform: scale(1);
-  }
-  @media only screen and (max-width: 768px) {
-    width: 68px;
+    transform: translateY(-5px);
+    background-color: var(--white);
+    color: var(--yellow);
+    border: 4px solid var(--white);
+    transition: 0.5s;
   }
 }
 

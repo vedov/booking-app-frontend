@@ -738,11 +738,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 250px;
   font-size: 1.25em;
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
   margin: 20px 0 0 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -750,76 +746,31 @@
   -ms-flex-item-align: start;
       align-self: flex-start;
   color: white;
-}
-
-.back-home-button a,
-.back-home-button a:visited,
-.back-home-button a:hover,
-.back-home-button a:active {
-  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
   color: var(--white);
+  border: 3px solid var(--yellow);
+  background: var(--yellow);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(161, 133, 105, 0.2);
+          box-shadow: 0px 0px 10px 0px rgba(161, 133, 105, 0.2);
 }
 
-.back-home-button:before {
-  content: "";
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-radius: 50px;
-  background: var(--blue);
-  width: 56px;
-  height: 56px;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-
-.back-home-button span {
-  vertical-align: middle;
-  text-align: center;
-  position: absolute;
-  font-family: "Viga";
-  -webkit-transition: 0.1s all ease-in;
-  transition: 0.1s all ease-in;
-  visibility: hidden;
-  padding: 0 0 0 20px;
-}
-
-.back-home-button span i {
-  font-size: 18px;
-  visibility: visible;
-  -webkit-transition: 0.3s all ease-in;
-  transition: 0.3s all ease-in;
-}
-
-.back-home-button:hover:before {
-  width: 100%;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.back-home-button:hover i {
-  color: var(--white);
-  -webkit-transition: 0.3s all ease-in;
-  transition: 0.3s all ease-in;
-  margin-right: 20px;
-}
-
-.back-home-button:hover span {
-  color: var(--white);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  visibility: visible;
-}
-
-.back-home-button:active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-@media only screen and (max-width: 768px) {
-  .back-home-button {
-    width: 68px;
-  }
+.back-home-button:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  background-color: var(--white);
+  color: var(--yellow);
+  border: 4px solid var(--white);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .blob-button-wrapper {
@@ -890,6 +841,360 @@
 .button-404:hover {
   -webkit-transform: scale(1.1) translateY(-5px);
           transform: scale(1.1) translateY(-5px);
+}
+
+.register-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media only screen and (max-width: 450px) {
+  .register-form {
+    margin: 2.5%;
+  }
+}
+
+.register-form form {
+  overflow-y: scroll;
+  padding: 0 0 30px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 400px;
+}
+
+@media only screen and (max-width: 450px) {
+  .register-form form {
+    width: 95%;
+    margin: auto;
+  }
+}
+
+.register-form form .error {
+  color: red;
+  font-size: 1rem;
+}
+
+.register-form form::-webkit-scrollbar {
+  display: none;
+}
+
+.register-form a {
+  color: var(--yellow);
+  text-decoration: none;
+}
+
+.register-form .accept-terms {
+  width: 100%;
+  text-align: center;
+  color: var(--light-gray);
+}
+
+.register-form .accept-terms input {
+  margin: 10px 5px 15px;
+}
+
+.register-form .accept-terms a {
+  color: var(--yellow);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-form p {
+  width: 100%;
+  text-align: center;
+  color: var(--light-gray);
+  font-size: 1em;
+}
+
+.register-form p a {
+  font-weight: 600;
+}
+
+.input-field {
+  width: 98%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 1% 0 1%;
+  font-family: "Coolvetica";
+}
+
+.input-field label {
+  color: var(--light-gray);
+  margin: 8px 0;
+}
+
+.input-field input {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: var(--lightst-gray);
+  border: none;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.input-field input:focus {
+  outline: none;
+  border: 2px solid var(--yellow);
+}
+
+.half {
+  width: 48%;
+  margin: 0 1% 0 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Coolvetica";
+}
+
+.half label {
+  color: var(--light-gray);
+  margin: 8px 0;
+}
+
+.half input {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: var(--lightst-gray);
+  border: none;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.half input:focus {
+  outline: none;
+  border: 2px solid var(--yellow);
+}
+
+.login {
+  height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 12%;
+}
+
+@media only screen and (max-width: 768px) {
+  .login {
+    padding-right: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.login .left {
+  width: 55%;
+  height: 100%;
+  background-image: url(./assets/loginBackground.png), -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dfeaee));
+  background-image: url(./assets/loginBackground.png), linear-gradient(#fff, #dfeaee);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .login .left {
+    display: none;
+  }
+}
+
+.login .left img {
+  width: 50%;
+}
+
+.landing-page-wrapper {
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.landing-page-wrapper .about-us {
+  margin: 15px 0;
+  padding: 0 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 1200px) {
+  .landing-page-wrapper .about-us {
+    padding: 0 3%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .landing-page-wrapper .about-us {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.landing-page-wrapper .about-us .left-side {
+  width: 40%;
+  position: relative;
+}
+
+@media only screen and (max-width: 1366px) {
+  .landing-page-wrapper .about-us .left-side {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .landing-page-wrapper .about-us .left-side {
+    width: 100%;
+  }
+}
+
+.landing-page-wrapper .about-us .left-side .images-wrapper {
+  position: relative;
+  width: 500px;
+}
+
+@media only screen and (max-width: 1366px) {
+  .landing-page-wrapper .about-us .left-side .images-wrapper {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .landing-page-wrapper .about-us .left-side .images-wrapper {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .landing-page-wrapper .about-us .left-side .images-wrapper {
+    width: 250px;
+  }
+}
+
+.landing-page-wrapper .about-us .left-side .images-wrapper img {
+  width: 100%;
+}
+
+.landing-page-wrapper .about-us .left-side .images-wrapper .play-icon {
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -webkit-filter: invert(38%) sepia(50%) saturate(1251%) hue-rotate(180deg) brightness(91%) contrast(95%) drop-shadow(1px 1px 20px #757575);
+          filter: invert(38%) sepia(50%) saturate(1251%) hue-rotate(180deg) brightness(91%) contrast(95%) drop-shadow(1px 1px 20px #757575);
+}
+
+.landing-page-wrapper .about-us .right-side {
+  width: 40%;
+  font-family: "Coolvetica";
+}
+
+@media only screen and (max-width: 1366px) {
+  .landing-page-wrapper .about-us .right-side {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .landing-page-wrapper .about-us .right-side {
+    width: 100%;
+  }
+}
+
+.landing-page-wrapper .about-us .right-side h6 {
+  color: var(--blue);
+}
+
+.landing-page-wrapper .about-us .right-side h2 {
+  font-weight: 400;
+}
+
+.landing-page-wrapper .about-us .right-side p {
+  font-family: "Lato";
+  letter-spacing: 0.025em;
+}
+
+.landing-page-wrapper .plans-background {
+  margin-top: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+}
+
+.landing-page-wrapper .plans-background span {
+  color: white;
+}
+
+.landing-page-wrapper .plans-background img {
+  width: 100%;
+  margin-bottom: -5px;
+}
+
+.landing-page-wrapper .plans-background img:last-child {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-top: -5px;
+}
+
+.landing-page-wrapper .benefits-background {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.landing-page-wrapper .benefits-background h6 {
+  color: var(--blue);
+}
+
+.landing-page-wrapper .benefits-background img {
+  width: 100%;
+  margin-bottom: -5px;
+}
+
+.landing-page-wrapper .benefits-background img:last-child {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-top: -5px;
 }
 
 @font-face {
