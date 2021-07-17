@@ -2,6 +2,11 @@
 @import "components/header/header";
 @import "components/navbar/navbar";
 @import "components/button/button";
+@import "components/form/form";
+@import "components/input-field/inputField";
+@import "screens/login/login";
+@import "screens/landingPage/landingPage";
+
 @font-face {
   font-family: "Coolvetica";
   src: local("Coolvetica Rg"),
