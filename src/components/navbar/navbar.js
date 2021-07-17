@@ -11,13 +11,20 @@ const Navbar = () => {
         <ul className="navbar-list">
           {routes &&
             routes.map((entry) => {
-              return <NavLink route={entry.route}>{entry.title}</NavLink>;
+              return (
+                <NavLink route={entry.route}>
+                  <Button variant="3">{entry.title}</Button>
+                </NavLink>
+              );
             })}
         </ul>
       </div>
       <div className="right">
         <Link to="/login">
-          <Button variant="2">Login</Button>
+          <Button variant="3">Login</Button>
+        </Link>
+        <Link to="/register">
+          <Button variant="2">Register</Button>
         </Link>
       </div>
     </div>

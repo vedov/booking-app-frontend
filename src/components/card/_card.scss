@@ -1,0 +1,26 @@
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: calc(25vw - 2.5%);
+  height: 400px;
+  border-radius: 15px;
+  position: relative;
+  background-color: var(--white);
+  transition: 0.15s ease-in;
+  cursor: pointer;
+  img {
+    height: 400px;
+    border-radius: 15px;
+  }
+
+  .card-title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: var(--white);
+  }
+  &:hover {
+    transform: translateY(10px) scale(1.1);
+    transition: 0.2s ease-in;
+  }
+}

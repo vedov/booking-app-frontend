@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../button/button";
 import { Link } from "react-router-dom";
-
+import FindProperty from "../findProperty/findProperty";
 const Header = () => {
   return (
     <div className="header-wrapper">
@@ -14,6 +14,9 @@ const Header = () => {
             <Button variant="2">Start Exploring</Button>
           </Link>
         </div>
+      </div>
+      <div className="find-card">
+        <FindProperty />
       </div>
     </div>
   );
