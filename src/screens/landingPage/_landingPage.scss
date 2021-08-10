@@ -1,12 +1,15 @@
 .landing-page-wrapper {
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   box-sizing: border-box;
   background-color: var(--whiteish);
   .landing-page-content {
     padding: 20px 2%;
     .landing-page-cards {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
+      width: 100%;
     }
   }
 }

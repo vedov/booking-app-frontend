@@ -21,7 +21,7 @@ export const login =
       };
 
       const { data } = await axios.post(
-        process.env.REACT_APP_BACKEND_URL + "/api/login",
+        process.env.REACT_APP_BACKEND_URL + "/user/login",
         { email, password },
         config
       );
@@ -32,6 +32,7 @@ export const login =
       });
 
       localStorage.setItem("token", data.token);
+      console.log(data.token);
     } catch (error) {
       dispatch({
         type: LOGIN_FAIL,

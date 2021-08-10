@@ -10,7 +10,7 @@ import useMediaQuery from "../../useMediaQuery";
 const Login = () => {
   const history = useHistory();
   const mobile = useMediaQuery("(max-width: 768px)");
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   return (
     <div className="login">
       {mobile && (
@@ -29,7 +29,7 @@ const Login = () => {
 
       <Form
         handleLogin={(data) => {
-          //dispatch(login({ email: data[0].value, password: data[1].value }));
+          dispatch(login({ email: data[0].value, password: data[1].value }));
           console.log({ email: data[0].value, password: data[1].value });
         }}
         data={LoginConstants}

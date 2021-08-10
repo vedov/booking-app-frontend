@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
-//import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { register } from "./registerAction";
 import useMediaQuery from "../../useMediaQuery";
 import Form from "../../components/form/form";
 import Button from "../../components/button/button";
-import RegisterConstants from "../../constants/register";
+import UserRegisterForm from "../../constants/register";
 
 const Register = () => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const mobile = useMediaQuery("(max-width: 768px)");
-  /* const [data, setData] = useState(
+  const [data, setData] = useState(
     location.pathname === "/register" && UserRegisterForm
-  ); */
-
+  );
+  useEffect(() => {
+    if (location.pathname === "/register") {
+      setData(UserRegisterForm);
+    }
+  }, [location.pathname]);
   return (
     <div className="register">
       {mobile && (
@@ -34,14 +38,16 @@ const Register = () => {
       </div>
       <Form
         handleRegister={(userData) => {
-          register({
-            firstName: userData[0].value,
-            lastName: userData[1].value,
-            email: userData[2].value,
-            password: userData[3].value,
-          });
+          dispatch(
+            register({
+              fullName: userData[0].value + userData[1].value,
+              email: userData[2].value,
+              password: userData[3].value,
+              password2: userData[4].value,
+            })
+          );
         }}
-        data={RegisterConstants}
+        data={data}
       ></Form>
     </div>
   );

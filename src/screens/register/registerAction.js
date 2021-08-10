@@ -5,7 +5,7 @@ import {
   REGISTER_FAIL,
 } from "./registerConstant";
 export const register =
-  ({ firstName, lastName, email, password, role }) =>
+  ({ fullName, email, password, password2 }) =>
   async (dispatch) => {
     try {
       dispatch({
@@ -16,29 +16,21 @@ export const register =
           "Content-Type": "application/json",
         },
       };
-
       const { data } = await axios.post(
-        process.env.REACT_APP_BACKEND_URL + "/api/register",
+        process.env.REACT_APP_BACKEND_URL + "/user/register",
         {
-          firstName,
-          lastName,
+          fullName,
           email,
           password,
-          role,
+          password2,
         },
         config
       );
-
-      // localStorage.setItem("token", data.token);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: data,
       });
-
-      // dispatch({
-      //   type: LOGIN_SUCCESS,
-      //   payload: data,
-      // });
+      localStorage.setItem("token", data.token);
     } catch (error) {
       dispatch({
         type: REGISTER_FAIL,
@@ -47,5 +39,6 @@ export const register =
             ? error.response.data.message
             : error.message,
       });
+      console.log(fullName, email, password, password2);
     }
   };

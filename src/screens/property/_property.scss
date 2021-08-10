@@ -1,0 +1,75 @@
+.property-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  .property-container {
+    margin: 20px 50px;
+    & > div {
+      margin: 20px;
+      padding: 5px;
+    }
+    .info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .left {
+        display: flex;
+        flex-direction: row;
+      }
+      .location {
+        color: #6d6d6d;
+      }
+      .right {
+        .host {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 200px;
+        }
+      }
+    }
+    .placeholder {
+      width: 100%;
+      background-color: black;
+      height: 400px;
+    }
+    .description {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .left {
+        display: flex;
+        flex-direction: row;
+        .amenities {
+          font-weight: 800;
+          font-size: 1em;
+          margin-right: 20px;
+        }
+        .room {
+          font-weight: 800;
+          font-size: 1em;
+          margin-left: 20px;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+          column-gap: 10px;
+          row-gap: 10px;
+        }
+      }
+      .right {
+        .price {
+          font-weight: 800;
+          min-width: 300px;
+        }
+        .cancel {
+          font-weight: 800;
+          min-width: 300px;
+        }
+      }
+    }
+  }
+}

@@ -1,15 +1,17 @@
 .card-wrapper {
   display: flex;
   flex-direction: column;
-  width: calc(25vw - 2.5%);
   height: 400px;
+  min-width: 350px;
   border-radius: 15px;
   position: relative;
-  background-color: var(--white);
+  background-color: black;
   transition: 0.15s ease-in;
   cursor: pointer;
   img {
     height: 400px;
+    width: 100%;
+    background-size: contain;
     border-radius: 15px;
   }
 

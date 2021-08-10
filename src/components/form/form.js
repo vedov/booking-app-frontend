@@ -15,19 +15,19 @@ const Form = (props) => {
   const [fieldsValid, setFieldsValid] = useState([]);
   const [terms, setTerms] = useState(false);
   const [passMatch, setPassMatch] = useState(false);
-  //const loginData = useSelector((state) => state.login);
-  /* const {
-    loading: loginLoading,
-    error: loginError,
-    userInfo: loginInfo,
-  } = loginData; */
-
-  /* const registerData = useSelector((state) => state.register);
+  const loginData = useSelector((state) => state.login);
   const {
-    loading: registerLoading,
-    error: registerError,
+    //loading: loginLoading,
+    //error: loginError,
+    userInfo: loginInfo,
+  } = loginData;
+
+  const registerData = useSelector((state) => state.register);
+  const {
+    //loading: registerLoading,
+    //error: registerError,
     userInfo: registerInfo,
-  } = registerData; */
+  } = registerData;
 
   //set initial validation to false
   useEffect(() => {
@@ -75,28 +75,18 @@ const Form = (props) => {
   };
   //on submit
   const handleSubmit = () => {
-    (location.pathname === "/register-user" ||
-      location.pathname === "/register-doctor") &&
-      props.handleRegister(data);
+    location.pathname === "/register" && props.handleRegister(data);
     location.pathname === "/login" && props.handleLogin(data);
   };
   //on Submit success
-  /* useEffect(() => {
-    let role;
-    if (loginInfo) {
-      role = jwtDecode(loginInfo && loginInfo.token);
-      role = role.user.role;
-      if (role === 0) history.push("/patient-dashboard/my-dashboard");
-      else if (role === 1) history.push("/admin-dashboard/my-dashboard");
-      else if (role === 2) history.push("/doctor-dashboard/my-dashboard");
+  useEffect(() => {
+    if (loginInfo && location.pathname == "/login") {
+      history.push("/");
     }
-    if (registerInfo && location.pathname !== "/login") {
-      if ((location.pathname = "/register-user"))
-        history.push("/register-user/complete");
-      if ((location.pathname = "/register-doctor"))
-        history.push("/register-doctor/complete");
+    if (registerInfo && location.pathname == "/register") {
+      history.push("/");
     }
-  }, [loginData, registerData, history, loginInfo, registerInfo, location]); */
+  }, [loginData, registerData, history, loginInfo, registerInfo, location]);
 
   useEffect(() => {
     let valid = true;
@@ -162,9 +152,11 @@ const Form = (props) => {
             <Link to={props.data.content[2]}> {props.data.content[1]}</Link>
           </p>
         ) : null}
-        {/* <p className="error">
-          {loginError ? loginError : registerError ? registerError : ""}
-        </p> */}
+        {/* {
+          <p className="error">
+            {loginError ? loginError : registerError ? registerError : ""}
+          </p>
+        } */}
 
         {/* {loginLoading || registerLoading ? (
           <Loader />
