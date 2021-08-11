@@ -30,7 +30,6 @@ const Login = () => {
       <Form
         handleLogin={(data) => {
           dispatch(login({ email: data[0].value, password: data[1].value }));
-          console.log({ email: data[0].value, password: data[1].value });
         }}
         data={LoginConstants}
       ></Form>

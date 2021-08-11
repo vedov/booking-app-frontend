@@ -1,39 +1,38 @@
 import axios from "axios";
 import {
-  REGISTER_REQUEST,
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-} from "./registerConstant";
-export const register =
-  ({ fullName, email, password, password2 }) =>
+  ADD_PROPERTY_REQUEST,
+  ADD_PROPERTY_SUCCESS,
+  ADD_PROPERTY_FAIL,
+} from "./addPropertyConstant";
+export const addProperty =
+  ({ name }) =>
   async (dispatch) => {
     try {
       dispatch({
-        type: REGISTER_REQUEST,
+        type: ADD_PROPERTY_REQUEST,
       });
       const config = {
         headers: {
           "Content-Type": "application/json",
         },
       };
+
       const { data } = await axios.post(
-        process.env.REACT_APP_BACKEND_URL + "/user/register",
+        process.env.REACT_APP_BACKEND_URL +
+          `/property/create-new?secret_token=` +
+          localStorage.getItem("token"),
         {
-          fullName,
-          email,
-          password,
-          password2,
+          name,
         },
         config
       );
       dispatch({
-        type: REGISTER_SUCCESS,
+        type: ADD_PROPERTY_SUCCESS,
         payload: data,
       });
-      localStorage.setItem("token", data.token);
     } catch (error) {
       dispatch({
-        type: REGISTER_FAIL,
+        type: ADD_PROPERTY_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

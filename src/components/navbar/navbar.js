@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../button/button";
 import { Link } from "react-router-dom";
 import NavLink from "../navLink/navLink";
@@ -20,12 +20,25 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="right">
-        <Link to="/login">
-          <Button variant="3">Login</Button>
-        </Link>
-        <Link to="/register">
-          <Button variant="2">Register</Button>
-        </Link>
+        {localStorage.getItem("token") ? (
+          <>
+            <Link to="/logout">
+              <Button variant="3">Log Out</Button>
+            </Link>
+            <Link to="/dashboard">
+              <Button variant="3">My Profile</Button>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <Button variant="3">Login</Button>
+            </Link>
+            <Link to="/register">
+              <Button variant="2">Register</Button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

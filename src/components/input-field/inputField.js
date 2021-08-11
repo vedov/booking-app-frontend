@@ -12,7 +12,7 @@ const InputField = (props) => {
       {data.label ? <label>{data.label}</label> : null}
       <input
         onChange={(e) => props.onChange(e)}
-        type={data.type || "text"}
+        type={data.type || "text" || "checkbox"}
         name={data.name || ""}
         placeholder={data.placeholder || ""}
       ></input>

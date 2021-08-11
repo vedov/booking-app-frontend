@@ -32,7 +32,6 @@ export const login =
       });
 
       localStorage.setItem("token", data.token);
-      console.log(data.token);
     } catch (error) {
       dispatch({
         type: LOGIN_FAIL,

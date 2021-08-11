@@ -7,10 +7,13 @@
 @import "components/navLink/navLink";
 @import "components/findProperty/findProperty";
 @import "components/card/card";
+@import "components/panel-navigation/PanelNavigation";
+@import "components/addPropertyForm/addProperty";
 @import "screens/login/login";
 @import "screens/register/register";
 @import "screens/landingPage/landingPage";
 @import "screens/property/property";
+@import "screens/user/user-dashboard/UserDashboard";
 
 @font-face {
   font-family: "Coolvetica";

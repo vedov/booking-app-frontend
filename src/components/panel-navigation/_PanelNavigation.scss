@@ -1,0 +1,122 @@
+.panel-navigation {
+  * {
+    transition: all 0.2s ease-in;
+    font-family: "Coolvetica";
+  }
+  transition: all 0.2s ease-in;
+  box-sizing: border-box;
+  padding: 20px 30px;
+
+  .logo {
+    width: 64px;
+    margin: 25px auto;
+  }
+  ul {
+    list-style-type: none;
+    font-size: 1.1em;
+    letter-spacing: 0.02em;
+    padding: 0;
+    li {
+      margin: 30px 0;
+      transition: 0.3s all ease-in;
+
+      a {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        color: var(--light-gray);
+        text-decoration: none;
+        padding: 10px 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        img {
+          margin: auto 15px auto 0;
+        }
+      }
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.15s all ease-in;
+      }
+    }
+    .active {
+      background-color: var(--white);
+      color: var(--yellow);
+      border-radius: 10px;
+      img {
+        transform: scale(1.2);
+        filter: invert(85%) sepia(20%) saturate(4935%) hue-rotate(325deg)
+          brightness(100%) contrast(90%);
+      }
+    }
+  }
+  .toggler {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    .toggle-button {
+      width: 36px;
+      height: 20px;
+      border: 2px solid var(--light-gray);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+
+      .circle {
+        display: block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--light-gray);
+        transition: all 0.2s ease-in-out;
+      }
+    }
+    .open {
+      margin-left: 10px;
+      border: 2px solid var(--yellow);
+      .circle {
+        margin-left: 18px;
+        background: var(--yellow);
+      }
+    }
+    .closed {
+      .circle {
+        margin-left: 2px;
+      }
+    }
+    .text {
+      color: var(--light-gray);
+      font-size: 0.9em;
+      letter-spacing: 0.01em;
+      margin-left: 10px;
+    }
+  }
+}
+
+.panel-navigation-closed {
+  padding: 10px 15px;
+  min-width: 70px;
+  overflow: hidden;
+  margin-right: -10px;
+  transition: 0.2s all ease-in;
+  .logo {
+    margin-left: 8px;
+    width: 36px;
+  }
+  ul {
+    li {
+      a {
+        padding: 8px;
+        text-align: center;
+        img {
+          margin: auto;
+        }
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}

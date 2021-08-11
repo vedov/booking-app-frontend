@@ -7,7 +7,6 @@ const Property = () => {
   const [property, setProperty] = useState({});
   const location = useLocation();
   const propertyID = location.pathname.split("/")[2];
-  console.log(propertyID);
   const fetchProperty = async () => {
     return await axios
       .get(
@@ -21,7 +20,6 @@ const Property = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         setProperty(res.data);
       });
   };
@@ -34,34 +32,38 @@ const Property = () => {
       <div className="property-container">
         <div className="title">
           <h4>{property.name && property.name}</h4>
-        </div>
-        <div className="images">
-          <div className="placeholder"></div>
-        </div>
-        <div className="info">
-          <div className="left">
-            <div className="location">
-              <h6>
-                {property.location &&
-                  property.location.address +
-                    ", " +
-                    property.location.city +
-                    ", " +
-                    property.location.country}
-              </h6>
+          <div className="info">
+            <div className="left">
+              <div className="location">
+                <h6>
+                  {property.location &&
+                    property.location.address +
+                      ", " +
+                      property.location.city +
+                      ", " +
+                      property.location.country}
+                </h6>
+              </div>
+            </div>
+            <div className="right">
+              <div className="host">
+                <p>
+                  {property.host &&
+                    property.host.fullName &&
+                    property.host.fullName}
+                </p>
+                <p>
+                  {property.host && property.host.email && property.host.email}
+                </p>
+              </div>
             </div>
           </div>
-          <div className="right">
-            <div className="host">
-              <p>
-                {property.host &&
-                  property.host.fullName &&
-                  property.host.fullName}
-              </p>
-              <p>
-                {property.host && property.host.email && property.host.email}
-              </p>
-            </div>
+        </div>
+        <div className="images">
+          <div className="image-main"></div>
+          <div className="image-other">
+            <div className="image-1"></div>
+            <div className="image-2"></div>
           </div>
         </div>
 
@@ -120,7 +122,7 @@ const Property = () => {
 
         <div className="map">
           <h6>Location:</h6>
-          <div className="placeholder"></div>
+          <div className="placeholder-map"></div>
         </div>
       </div>
       <Footer></Footer>

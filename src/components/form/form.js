@@ -29,6 +29,9 @@ const Form = (props) => {
     userInfo: registerInfo,
   } = registerData;
 
+  const propertyData = useSelector((state) => state.addProperty);
+  const { userInfo: propertyInfo } = propertyData;
+
   //set initial validation to false
   useEffect(() => {
     let array = [];
@@ -62,10 +65,14 @@ const Form = (props) => {
         return { name: entry.name, value: event.target.value };
       else return { name: entry.name, value: entry.value };
     });
+
     setData([...arr]);
+
     if (location.pathname !== "/login")
       setPassMatch(arr[3].value === arr[4].value);
+
     let array = [];
+
     array = arr.map((entry) => {
       if (entry.value !== "") {
         return { name: entry.name, valid: true };
@@ -77,6 +84,7 @@ const Form = (props) => {
   const handleSubmit = () => {
     location.pathname === "/register" && props.handleRegister(data);
     location.pathname === "/login" && props.handleLogin(data);
+    location.pathname === "/dashboard" && props.handleAddProperty(data);
   };
   //on Submit success
   useEffect(() => {
@@ -86,7 +94,18 @@ const Form = (props) => {
     if (registerInfo && location.pathname == "/register") {
       history.push("/");
     }
-  }, [loginData, registerData, history, loginInfo, registerInfo, location]);
+    if (propertyInfo && location.pathname == "/dashboard") {
+      history.push("/");
+    }
+  }, [
+    loginData,
+    registerData,
+    history,
+    loginInfo,
+    registerInfo,
+    propertyInfo,
+    location,
+  ]);
 
   useEffect(() => {
     let valid = true;
