@@ -7,6 +7,7 @@
   display: flex;
   background-color: var(--white);
   .panel {
+    width: 100%;
     box-sizing: border-box;
     padding: 30px;
     margin: 0 0 0 30px;
@@ -14,6 +15,7 @@
     border-top-left-radius: 10px;
     box-shadow: inset 5px 5px 25px var(--whiteish);
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     overflow-y: scroll;
     &::-webkit-scrollbar {

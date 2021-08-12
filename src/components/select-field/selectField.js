@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SelectField = (props) => {
   const data = props.data || {};
-
+  const handleChange = (e) => {
+    props.setSelectValue(e.target.value);
+  };
   return (
     <div
       className={`${props.variant === "1" && "half"} ${
@@ -10,9 +12,9 @@ const SelectField = (props) => {
       }`}
     >
       {data.label ? <label>{data.label}</label> : null}
-      <select name={data.name}>
-        <option value="lodge">Lodge</option>
-        <option value="apartment">Apartment</option>
+      <select name={data.name} onChange={handleChange}>
+        <option value="Lodge">Lodge</option>
+        <option value="Apartment">Apartment</option>
       </select>
     </div>
   );

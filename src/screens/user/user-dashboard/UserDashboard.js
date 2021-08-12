@@ -29,47 +29,41 @@ const UserDashboard = () => {
       <div className="dashboard-wrapper">
         <PanelNavigation data={DashboardNavigationConstants} />
         <div className="panel user-dashboard-wrapper">
-          <div className="user-dashboard-wrapper row">
-            <div className="user-dashboard-wrapper col">
-              {createProperty && createProperty ? (
-                <>
-                  <AddPropertyForm
-                    handleAddProperty={(userData) => {
-                      dispatch(
-                        addProperty({
-                          name: userData[0].value,
-                          propertyType: userData[1].value,
-                          amenities: userData[2].value,
-                          imageUrls: userData[3].value,
-                          bedrooms: userData[4].value,
-                          beds: userData[5].value,
-                          bathrooms: userData[6].value,
-                          pricePerNight: userData[7].value,
-                          maxGuests: userData[8].value,
-                          address: userData[9].value,
-                          city: userData[10].value,
-                          zipCode: userData[11].value,
-                          country: userData[12].value,
-                          lat: userData[13].value,
-                          lng: userData[14].value,
-                          description: userData[15].value,
-                          freeCancel: userData[16].value,
-                        })
-                      );
-                    }}
-                    data={data}
-                  ></AddPropertyForm>
-                </>
-              ) : (
-                <>
-                  <h5 className="greeting"> Hello, Vedad!</h5>
-                  <Button variant="2" click={() => setCreateProperty(true)}>
-                    Add Property
-                  </Button>
-                </>
-              )}
-            </div>
-          </div>
+          {createProperty && createProperty ? (
+            <AddPropertyForm
+              handleAddProperty={(userData) => {
+                dispatch(
+                  addProperty({
+                    name: userData[0].value,
+                    propertyType: userData[1].value,
+                    amenities: userData[2].value,
+                    imageUrls: userData[3].value,
+                    bedrooms: userData[4].value,
+                    beds: userData[5].value,
+                    bathrooms: userData[6].value,
+                    pricePerNight: userData[7].value,
+                    maxGuests: userData[8].value,
+                    address: userData[9].value,
+                    city: userData[10].value,
+                    zipCode: userData[11].value,
+                    country: userData[12].value,
+                    lat: userData[13].value,
+                    lng: userData[14].value,
+                    description: userData[15].value,
+                    freeCancel: userData[16].value,
+                  })
+                );
+              }}
+              data={data}
+            ></AddPropertyForm>
+          ) : (
+            <>
+              <h5 className="greeting"> Hello, Vedad!</h5>
+              <Button variant="2" click={() => setCreateProperty(true)}>
+                Add Property
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </>

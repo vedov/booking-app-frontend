@@ -3,6 +3,7 @@ import axios from "axios";
 import Footer from "../../components/footer/footer";
 import { useLocation } from "react-router-dom";
 import Navbar from "../../components/navbar/navbar";
+import Map from "../../components/Map/Map";
 const Property = () => {
   const [property, setProperty] = useState({});
   const location = useLocation();
@@ -60,10 +61,12 @@ const Property = () => {
           </div>
         </div>
         <div className="images">
-          <div className="image-main"></div>
+          <div className="image-main">
+            <img src={property.imageUrls && property.imageUrls[0]}></img>
+          </div>
           <div className="image-other">
-            <div className="image-1"></div>
-            <div className="image-2"></div>
+            <img src={property.imageUrls && property.imageUrls[1]}></img>
+            <img src={property.imageUrls && property.imageUrls[2]}></img>
           </div>
         </div>
 
@@ -122,7 +125,9 @@ const Property = () => {
 
         <div className="map">
           <h6>Location:</h6>
-          <div className="placeholder-map"></div>
+          {property.location && (
+            <Map lng={property.location.lng} lat={property.location.lat}></Map>
+          )}
         </div>
       </div>
       <Footer></Footer>

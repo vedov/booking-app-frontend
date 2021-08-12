@@ -40,7 +40,7 @@ const Register = () => {
         handleRegister={(userData) => {
           dispatch(
             register({
-              fullName: userData[0].value + userData[1].value,
+              fullName: userData[0].value + " " + userData[1].value,
               email: userData[2].value,
               password: userData[3].value,
               password2: userData[4].value,

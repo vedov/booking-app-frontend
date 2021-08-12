@@ -42,8 +42,8 @@ export const addProperty =
         {
           name,
           propertyType,
-          amenities: ["Wifi", "Parking"],
-          imageUrls: ["linkA", "linkB"],
+          amenities,
+          imageUrls,
           bedrooms,
           beds,
           bathrooms,
