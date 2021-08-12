@@ -5,7 +5,25 @@ import {
   ADD_PROPERTY_FAIL,
 } from "./addPropertyConstant";
 export const addProperty =
-  ({ name }) =>
+  ({
+    name,
+    propertyType,
+    amenities,
+    imageUrls,
+    bedrooms,
+    beds,
+    bathrooms,
+    pricePerNight,
+    maxGuests,
+    address,
+    city,
+    zipCode,
+    country,
+    lat,
+    lng,
+    description,
+    freeCancel,
+  }) =>
   async (dispatch) => {
     try {
       dispatch({
@@ -23,9 +41,26 @@ export const addProperty =
           localStorage.getItem("token"),
         {
           name,
+          propertyType,
+          amenities: ["Wifi", "Parking"],
+          imageUrls: ["linkA", "linkB"],
+          bedrooms,
+          beds,
+          bathrooms,
+          pricePerNight,
+          maxGuests,
+          address,
+          city,
+          zipCode,
+          country,
+          lat,
+          lng,
+          description,
+          freeCancel: true,
         },
         config
       );
+      console.log("DATA", data);
       dispatch({
         type: ADD_PROPERTY_SUCCESS,
         payload: data,

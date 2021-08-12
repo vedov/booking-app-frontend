@@ -5,13 +5,14 @@
   margin: 0;
   height: 100vh;
   display: flex;
-  background-color: var(--whiteish);
+  background-color: var(--white);
   .panel {
     box-sizing: border-box;
     padding: 30px;
     margin: 0 0 0 30px;
     flex-grow: 1;
     border-top-left-radius: 10px;
+    box-shadow: inset 5px 5px 25px var(--whiteish);
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;

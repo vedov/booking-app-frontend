@@ -6,10 +6,13 @@
   background-color: var(--whiteish);
   .landing-page-content {
     padding: 20px 2%;
+
     .landing-page-cards {
       display: flex;
-      justify-content: space-evenly;
-      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: start;
+      max-width: 100%;
     }
   }
 }

@@ -6,6 +6,7 @@ import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import Loader from "../../components/loader/loader";
 import { useSelector } from "react-redux";
+import SelectField from "../../components/select-field/selectField";
 
 const AddPropertyForm = (props) => {
   const location = useLocation();
@@ -64,6 +65,7 @@ const AddPropertyForm = (props) => {
   };
   //on submit
   const handleSubmit = () => {
+    console.log(data);
     location.pathname === "/dashboard" && props.handleAddProperty(data);
   };
   //on Submit success
@@ -72,70 +74,127 @@ const AddPropertyForm = (props) => {
       history.push("/");
     }
   }, [history, propertyInfo, location]);
-
-  useEffect(() => {
-    let valid = true;
-    fieldsValid.map((entry) => {
-      if (entry.valid === false) return (valid = false);
-    });
-    setFormValid(valid);
-  }, [fieldsValid]);
-
+  const property = props.data.inputFields;
   return (
     <div className="property-form">
       <h3>{props.data.title}</h3>
       <h5>{props.data.subtitle}</h5>
       <form>
-        <div className="left">
-          <InputField
-            variant="0"
-            key={props.data.inputFields[0].name}
-            data={props.data.inputFields[0]}
-            onChange={(e) => handleChange(e)}
-          ></InputField>
-          <InputField
-            variant="1"
-            key={props.data.inputFields[3]}
-            data={props.data.inputFields[3]}
-            onChange={(e) => handleChange(e)}
-          ></InputField>
-          <InputField
-            variant="1"
-            key={props.data.inputFields[4]}
-            data={props.data.inputFields[4]}
-            onChange={(e) => handleChange(e)}
-          ></InputField>
-          <InputField
-            variant="1"
-            key={props.data.inputFields[5]}
-            data={props.data.inputFields[5]}
-            onChange={(e) => handleChange(e)}
-          ></InputField>
-          <InputField
-            variant="1"
-            key={props.data.inputFields[6]}
-            data={props.data.inputFields[6]}
-            onChange={(e) => handleChange(e)}
-          ></InputField>
-          <InputField
-            variant="1"
-            key={props.data.inputFields[12].freeCancel}
-            data={props.data.inputFields[12]}
-            onChange={(e) => handleChange(e)}
-          ></InputField>
-        </div>
-        <div className="right">
-          <InputField
-            variant="0"
-            key={props.data.inputFields[1].propertyType}
-            data={props.data.inputFields[1]}
-            onChange={(e) => handleChange(e)}
-          ></InputField>
+        <>
+          {props.data.inputFields && (
+            <>
+              <InputField
+                variant="1"
+                key={property[0].name}
+                data={property[0]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[1].name}
+                data={property[1]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[2].name}
+                data={property[2]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[3].name}
+                data={property[3]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[4].name}
+                data={property[4]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[5].name}
+                data={property[5]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[6].name}
+                data={property[6]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[7].name}
+                data={property[7]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[8].name}
+                data={property[8]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[9].name}
+                data={property[9]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[10].name}
+                data={property[10]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[11].name}
+                data={property[11]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[12].name}
+                data={property[12]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[13].name}
+                data={property[13]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[14].name}
+                data={property[14]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[15].name}
+                data={property[15]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+              <InputField
+                variant="1"
+                key={property[16].name}
+                data={property[16]}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+            </>
+          )}
           <Button
             variant="2"
-            disabled={!formValid}
             type="submit"
-            customStyle={{ width: "75%", margin: "auto", marginTop: "15px" }}
+            customStyle={{
+              width: "75%",
+              margin: "auto",
+              marginTop: "15px",
+            }}
             click={(e) => {
               e.preventDefault();
               handleSubmit();
@@ -143,25 +202,7 @@ const AddPropertyForm = (props) => {
           >
             {props.data.buttonContent}
           </Button>
-          {/* Content */}
-          {props.data.content ? (
-            <p>
-              {props.data.content[0]}
-              <Link to={props.data.content[2]}> {props.data.content[1]}</Link>
-            </p>
-          ) : null}
-          {/* {
-          <p className="error">
-            {loginError ? loginError : registerError ? registerError : ""}
-          </p>
-        } */}
-
-          {/* {loginLoading || registerLoading ? (
-          <Loader />
-        ) : (
-          <div style={{ width: "75px", height: "75px", margin: "auto" }}></div>
-        )} */}
-        </div>
+        </>
       </form>
     </div>
   );
