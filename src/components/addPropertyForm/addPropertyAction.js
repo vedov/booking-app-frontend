@@ -56,7 +56,7 @@ export const addProperty =
           lat,
           lng,
           description,
-          freeCancel: true,
+          freeCancel,
         },
         config
       );

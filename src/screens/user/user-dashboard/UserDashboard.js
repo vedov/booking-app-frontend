@@ -55,6 +55,7 @@ const UserDashboard = () => {
                 );
               }}
               data={data}
+              setCreateProperty={setCreateProperty}
             ></AddPropertyForm>
           ) : (
             <>

@@ -979,7 +979,7 @@
   border: 2px solid var(--yellow);
 }
 
-.selects-field {
+.select-field {
   width: 98%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -992,12 +992,12 @@
   font-family: "Coolvetica";
 }
 
-.selects-field label {
+.select-field label {
   color: var(--light-gray);
   margin: 8px 0;
 }
 
-.selects-field input {
+.select-field select {
   padding: 10px;
   margin-bottom: 8px;
   background: var(--lightst-gray);
@@ -1008,41 +1008,7 @@
   transition: all 0.1s ease-in;
 }
 
-.selects-field input:focus {
-  outline: none;
-  border: 2px solid var(--yellow);
-}
-
-.half {
-  width: 48%;
-  margin: 0 1% 0 1%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  font-family: "Coolvetica";
-}
-
-.half label {
-  color: var(--light-gray);
-  margin: 8px 0;
-}
-
-.half input {
-  padding: 10px;
-  margin-bottom: 8px;
-  background: var(--lightst-gray);
-  border: none;
-  border-radius: 5px;
-  border: 2px solid transparent;
-  -webkit-transition: all 0.1s ease-in;
-  transition: all 0.1s ease-in;
-}
-
-.half input:focus {
+.select-field select:focus {
   outline: none;
   border: 2px solid var(--yellow);
 }
@@ -1306,6 +1272,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
   padding: 20px;
 }
 
@@ -1327,7 +1294,7 @@
 }
 
 .property-form form .columns {
-  width: 70vw;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1335,9 +1302,42 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.property-form form .columns > div {
+  margin: 30px;
+}
+
+.property-form form .columns .amenities-checkboxes {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.property-form form .columns .map {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+.property-form form .columns label {
+  font-family: "Coolvetica";
+  color: var(--light-gray);
+  margin: 8px 0;
+}
+
+.property-form form .columns Button {
+  width: 10px;
 }
 
 .property-form form .error {
@@ -1370,6 +1370,39 @@
   width: 100%;
   height: 400px;
   border-radius: 25px;
+}
+
+.check-field {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 1% 0 1%;
+  font-family: "Coolvetica";
+}
+
+.check-field label {
+  color: var(--light-gray);
+  margin: 10px 0;
+}
+
+.check-field input {
+  padding: 15px;
+  margin-bottom: 8px;
+  background: var(--lightst-gray);
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.check-field input:focus {
+  outline: none;
+  border: 2px solid var(--yellow);
 }
 
 .login {
@@ -1739,6 +1772,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  width: 100%;
 }
 
 @media only screen and (max-width: 768px) {
