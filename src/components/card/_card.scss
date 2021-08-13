@@ -1,18 +1,21 @@
 .card-wrapper {
   display: flex;
   flex-direction: column;
-  height: 400px;
-  min-width: 350px;
+  height: 300px;
+  min-width: 250px;
   border-radius: 15px;
   position: relative;
   background-color: black;
   transition: 0.15s ease-in;
   cursor: pointer;
   img {
-    height: 400px;
+    height: 300px;
     width: 100%;
     background-size: contain;
     border-radius: 15px;
+  }
+  p {
+    font-size: 1em;
   }
 
   .card-title {
@@ -22,7 +25,7 @@
     color: var(--white);
   }
   &:hover {
-    transform: translateY(10px) scale(1.1);
+    transform: translateY(10px) scale(1.05);
     transition: 0.2s ease-in;
   }
 }

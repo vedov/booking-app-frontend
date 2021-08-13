@@ -25,8 +25,8 @@ const Navbar = () => {
             <Link to="/logout">
               <Button variant="3">Log Out</Button>
             </Link>
-            <Link to="/dashboard">
-              <Button variant="3">My Profile</Button>
+            <Link to="/dashboard/mydashboard">
+              <Button variant="3">Dashboard</Button>
             </Link>
           </>
         ) : (

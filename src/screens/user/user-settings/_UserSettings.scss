@@ -1,0 +1,18 @@
+.greeting {
+  margin-left: 20px;
+}
+
+.text-field {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+.label {
+  font-family: "Coolvetica";
+  color: var(--light-gray);
+}
+.text {
+  margin-left: 20px;
+  font-family: "Coolvetica";
+  color: var(--black);
+}

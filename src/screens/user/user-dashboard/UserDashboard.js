@@ -8,6 +8,7 @@ import DashboardNavigationConstants from "../../../constants/dashboardNavigation
 import { addProperty } from "../../../components/addPropertyForm/addPropertyAction";
 import Navbar from "../../../components/navbar/navbar";
 import Button from "../../../components/button/button";
+import Card from "../../../components/card/card";
 import AddPropertyForm from "../../../components/addPropertyForm/addProperty";
 import AddPropertyConstants from "../../../constants/addProperty";
 
@@ -16,9 +17,28 @@ const UserDashboard = () => {
   const dispatch = useDispatch();
   const [createProperty, setCreateProperty] = useState(false);
   const [data, setData] = useState(
-    location.pathname === "/dashboard" && AddPropertyConstants
+    location.pathname === "/dashboard/mydashboard" && AddPropertyConstants
   );
+  const [userProperties, setUserProperties] = useState([]);
+  const userID = jwtDecode(localStorage.getItem("token")).user.id;
+  const fetchUserProperties = async () => {
+    return await axios
+      .get(
+        process.env.REACT_APP_BACKEND_URL +
+          `/user/${userID}?secret_token=` +
+          localStorage.getItem("token"),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setUserProperties(res.data.properties);
+      });
+  };
   useEffect(() => {
+    fetchUserProperties();
     if (location.pathname === "/dashboard") {
       setData(AddPropertyConstants);
     }
@@ -58,12 +78,32 @@ const UserDashboard = () => {
               setCreateProperty={setCreateProperty}
             ></AddPropertyForm>
           ) : (
-            <>
-              <h5 className="greeting"> Hello, Vedad!</h5>
-              <Button variant="2" click={() => setCreateProperty(true)}>
-                Add Property
-              </Button>
-            </>
+            <div className="col">
+              <div className="row">
+                <h5 className="greeting"> Dashboard</h5>
+                <Button variant="2" click={() => setCreateProperty(true)}>
+                  Add Property
+                </Button>
+              </div>
+              <hr></hr>
+              <h5 className="greeting"> Your Properties</h5>
+              <div className="dashboard-cards">
+                {userProperties &&
+                  userProperties.map((item) => {
+                    return (
+                      <Card
+                        id={item._id}
+                        name={item.name}
+                        description={item.propertyType.description}
+                        address={item.location.address}
+                        city={item.location.city}
+                        pricePerNight={item.pricePerNight}
+                        image={item.imageURLs}
+                      ></Card>
+                    );
+                  })}
+              </div>
+            </div>
           )}
         </div>
       </div>

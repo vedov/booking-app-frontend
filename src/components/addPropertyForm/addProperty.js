@@ -69,6 +69,7 @@ const AddPropertyForm = (props) => {
     });
     setFieldsValid([...array]);
   };
+
   const handleCheck = (event) => {
     data[16].value = event.target.checked;
   };
@@ -86,15 +87,16 @@ const AddPropertyForm = (props) => {
     console.log(property);
     console.log(data);
     console.log(data[2].value);
-    /* location.pathname === "/dashboard" && props.handleAddProperty(data); */
+    location.pathname === "/dashboard" && props.handleAddProperty(data);
+    props.setCreateProperty(false);
   };
 
-  //on Submit success
+  /* //on Submit success
   useEffect(() => {
     if (propertyInfo && location.pathname == "/dashboard") {
       history.push("/");
     }
-  }, [history, propertyInfo, location]);
+  }, [history, propertyInfo, location]); */
 
   return (
     <div className="property-form">

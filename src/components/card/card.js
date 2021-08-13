@@ -9,7 +9,7 @@ const Card = (props) => {
       <div className="card-wrapper">
         <img src={props.image} />
         <div className="card-title">
-          <h4>{props.name}</h4>
+          <h5>{props.name}</h5>
           <p>{props.description}</p>
           <p>{location}</p>
           <h6>$ {props.pricePerNight} per Night</h6>

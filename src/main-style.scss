@@ -12,11 +12,13 @@
 @import "components/addPropertyForm/addProperty";
 @import "components/Map/Map";
 @import "components/checkField/checkField";
+@import "components/userInfoForm/userInfoForm";
 @import "screens/login/login";
 @import "screens/register/register";
 @import "screens/landingPage/landingPage";
 @import "screens/property/property";
 @import "screens/user/user-dashboard/UserDashboard";
+@import "screens/user/user-settings/UserSettings";
 
 @font-face {
   font-family: "Coolvetica";
