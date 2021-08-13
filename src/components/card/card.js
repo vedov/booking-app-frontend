@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../button/button";
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
   const location = props.address + ", " + props.city;
+
   return (
     <Link to={"/property/" + props.id}>
       <div className="card-wrapper">

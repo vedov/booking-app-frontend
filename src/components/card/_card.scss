@@ -2,18 +2,21 @@
   display: flex;
   flex-direction: column;
   height: 300px;
-  min-width: 250px;
+  width: 300px;
   border-radius: 15px;
   position: relative;
   background-color: black;
   transition: 0.15s ease-in;
+
   cursor: pointer;
   img {
+    filter: brightness(45%);
     height: 300px;
     width: 100%;
     background-size: contain;
     border-radius: 15px;
   }
+
   p {
     font-size: 1em;
   }

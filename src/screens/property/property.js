@@ -48,11 +48,11 @@ const Property = () => {
             </div>
             <div className="right">
               <div className="host">
-                <p>
+                <h6>
                   {property.host &&
                     property.host.fullName &&
                     property.host.fullName}
-                </p>
+                </h6>
                 <p>
                   {property.host && property.host.email && property.host.email}
                 </p>
@@ -66,7 +66,6 @@ const Property = () => {
           </div>
           <div className="image-other">
             <img src={property.imageUrls && property.imageUrls[1]}></img>
-            <img src={property.imageUrls && property.imageUrls[2]}></img>
           </div>
         </div>
 

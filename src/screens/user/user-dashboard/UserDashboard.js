@@ -98,7 +98,7 @@ const UserDashboard = () => {
                         address={item.location.address}
                         city={item.location.city}
                         pricePerNight={item.pricePerNight}
-                        image={item.imageURLs}
+                        image={item.imageUrls[0]}
                       ></Card>
                     );
                   })}
