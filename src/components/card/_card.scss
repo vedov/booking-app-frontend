@@ -32,3 +32,35 @@
     transition: 0.2s ease-in;
   }
 }
+.medium {
+  height: 200px;
+  width: 200px;
+  img {
+    height: 200px;
+  }
+}
+.small {
+  height: 150px;
+  width: 150px;
+  border-radius: 10px;
+  position: relative;
+  background-color: black;
+  img {
+    filter: brightness(45%);
+    height: 150px;
+    width: 100%;
+    background-size: contain;
+    border-radius: 10px;
+  }
+  p {
+    font-size: 0.8em;
+  }
+
+  .card-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: var(--white);
+    font-size: 0.8em;
+  }
+}

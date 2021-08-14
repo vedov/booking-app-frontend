@@ -1117,6 +1117,44 @@
   transition: 0.2s ease-in;
 }
 
+.medium {
+  height: 200px;
+  width: 200px;
+}
+
+.medium img {
+  height: 200px;
+}
+
+.small {
+  height: 150px;
+  width: 150px;
+  border-radius: 10px;
+  position: relative;
+  background-color: black;
+}
+
+.small img {
+  -webkit-filter: brightness(45%);
+          filter: brightness(45%);
+  height: 150px;
+  width: 100%;
+  background-size: contain;
+  border-radius: 10px;
+}
+
+.small p {
+  font-size: 0.8em;
+}
+
+.small .card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: var(--white);
+  font-size: 0.8em;
+}
+
 .panel-navigation {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
@@ -1346,6 +1384,27 @@
 
 .property-form form .columns Button {
   width: 10px;
+}
+
+.property-form form .columns .image-input label {
+  color: var(--light-gray);
+  margin: 8px 0;
+}
+
+.property-form form .columns .image-input input {
+  padding: 10px;
+  margin: 8px 0;
+  background: var(--lightst-gray);
+  border: none;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.property-form form .columns .image-input input:focus {
+  outline: none;
+  border: 2px solid var(--yellow);
 }
 
 .property-form form .error {

@@ -41,6 +41,25 @@
       Button {
         width: 10px;
       }
+      .image-input {
+        label {
+          color: var(--light-gray);
+          margin: 8px 0;
+        }
+        input {
+          padding: 10px;
+          margin: 8px 0;
+          background: var(--lightst-gray);
+          border: none;
+          border-radius: 5px;
+          border: 2px solid transparent;
+          transition: all 0.1s ease-in;
+          &:focus {
+            outline: none;
+            border: 2px solid var(--yellow);
+          }
+        }
+      }
     }
 
     .error {

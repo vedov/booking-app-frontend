@@ -3,6 +3,7 @@ import jwtDecode from "jwt-decode";
 import InputField from "../../components/input-field/inputField";
 import Button from "../../components/button/button";
 import { useHistory, useLocation } from "react-router";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../../components/loader/loader";
 import { useSelector } from "react-redux";
@@ -20,7 +21,10 @@ const AddPropertyForm = (props) => {
   const [mapLocation, setMapLocation] = useState([]);
   const propertyData = useSelector((state) => state.addProperty);
   const [selectValue, setSelectValue] = useState("Lodge");
+  const [propertyImages, setPropertyImages] = useState([]);
   let amenities = [];
+  let imageCounter = 0;
+
   const property = props.data.inputFields;
   const {
     //loading: registerLoading,
@@ -73,11 +77,35 @@ const AddPropertyForm = (props) => {
   const handleCheck = (event) => {
     data[16].value = event.target.checked;
   };
+
+  const handleImageSelect = async (event) => {
+    let array = [];
+    for (let i = 0; i < event.target.files.length; i++) {
+      const formData = new FormData();
+      formData.append("file", event.target.files[i]);
+      formData.append("upload_preset", "f9k4o6vj");
+      formData.append("api_key", "236325287598512");
+      await axios
+        .post(
+          "https://api.cloudinary.com/v1_1/dl84dqtbq/image/upload",
+          formData
+        )
+        .then((res) => {
+          console.log("gurnuo");
+          console.log(res.data);
+          imageCounter++;
+          array.push(res.data.secure_url);
+          console.log(imageCounter, res.data.secure_url);
+        });
+    }
+    setPropertyImages(array);
+  };
+
   //on submit
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     data[1].value = selectValue;
     data[2].value = amenities;
-    data[3].value = data[3].value.split(",");
+    data[3].value = propertyImages;
     data[9].value = mapLocation[0];
     data[10].value = mapLocation[1];
     data[11].value = mapLocation[2];
@@ -86,9 +114,9 @@ const AddPropertyForm = (props) => {
     data[14].value = mapLocation[5];
     console.log(property);
     console.log(data);
-    console.log(data[2].value);
-    location.pathname === "/dashboard" && props.handleAddProperty(data);
-    props.setCreateProperty(false);
+
+    /* location.pathname === "/dashboard" && props.handleAddProperty(data); */
+    /* props.setCreateProperty(false); */
   };
 
   /* //on Submit success
@@ -142,12 +170,20 @@ const AddPropertyForm = (props) => {
                   amenities={amenities}
                 ></CheckField>
               </div>
-              <InputField
+              <div className="image-input">
+                <label>Images</label>
+                <input
+                  type="file"
+                  onChange={(e) => handleImageSelect(e)}
+                  multiple
+                ></input>
+              </div>
+              {/* <InputField
                 variant="0"
                 key={property[3].name}
                 data={property[3]}
                 onChange={(e) => handleChange(e)}
-              ></InputField>
+              ></InputField> */}
               <InputField
                 variant="0"
                 key={property[15].name}

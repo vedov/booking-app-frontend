@@ -10,6 +10,7 @@ import Card from "../../components/card/card";
 
 const LandingPage = () => {
   const [sarajevoProperties, setSarajevoProperties] = useState([]);
+  const [bosniaProperties, setBosniaProperties] = useState([]);
   const [apartments, setApartments] = useState([]);
   const fetchPropertiesSarajevo = async () => {
     return await axios
@@ -25,6 +26,23 @@ const LandingPage = () => {
       )
       .then((res) => {
         setSarajevoProperties(res.data);
+      });
+  };
+
+  const fetchPropertiesBosnia = async () => {
+    return await axios
+      .get(
+        process.env.REACT_APP_BACKEND_URL +
+          "/property/all/country/BiH?secret_token=" +
+          localStorage.getItem("token"),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setBosniaProperties(res.data);
       });
   };
   const fetchApartments = async () => {
@@ -47,6 +65,7 @@ const LandingPage = () => {
   useEffect(async () => {
     await fetchPropertiesSarajevo();
     await fetchApartments();
+    await fetchPropertiesBosnia();
   }, []);
 
   return (
@@ -72,7 +91,26 @@ const LandingPage = () => {
             })}
         </div>
       </div>
-
+      <div className="landing-page-content">
+        <h3>Explore Bosnia and Herzegovina</h3>
+        <div className="landing-page-cards">
+          {bosniaProperties &&
+            bosniaProperties.map((item) => {
+              return (
+                <Card
+                  id={item._id}
+                  name={item.name}
+                  description={item.propertyType.description}
+                  address={item.location.address}
+                  city={item.location.city}
+                  pricePerNight={item.pricePerNight}
+                  image={item.imageURLs}
+                  size="small"
+                ></Card>
+              );
+            })}
+        </div>
+      </div>
       <div className="landing-page-content">
         <h3>Find Apartments</h3>
         <div className="landing-page-cards">
@@ -87,6 +125,7 @@ const LandingPage = () => {
                   city={item.location.city}
                   pricePerNight={item.pricePerNight}
                   image={item.imageURLs}
+                  size="small"
                 ></Card>
               );
             })}
