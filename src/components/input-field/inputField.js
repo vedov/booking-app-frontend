@@ -16,7 +16,7 @@ const InputField = (props) => {
         type={data.type || "text" || "checkbox"}
         name={data.name || ""}
         placeholder={data.placeholder || ""}
-        value={data.value || ""}
+        value={data.value}
       ></input>
     </div>
   );

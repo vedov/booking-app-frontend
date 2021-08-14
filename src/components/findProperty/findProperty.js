@@ -8,23 +8,23 @@ const FindProperty = () => {
       <div className="find-property-card">
         <div className="field">
           <h6>Location</h6>
-          <p>Where are you going?</p>
+          <input type="text" placeholder="Where are you going?"></input>
         </div>
         <div className="field">
           <h6>Check In</h6>
-          <p>Set a Date</p>
+          <input type="date" placeholder="Set a Date"></input>
         </div>
         <div className="field">
           <h6>Check Out</h6>
-          <p>Set a Date</p>
+          <input type="date" placeholder="Set a Date"></input>
         </div>
         <div className="field">
           <h6>Guests</h6>
-          <p>Add Guests</p>
+          <input type="number" placeholder="Number of guests"></input>
         </div>
         <div className="field">
-          <h6>SEARCH</h6>
-          <p>SEARCH</p>
+          <br />
+          <Button variant="2">Search</Button>
         </div>
       </div>
     </div>

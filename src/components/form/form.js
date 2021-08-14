@@ -18,19 +18,19 @@ const Form = (props) => {
   const loginData = useSelector((state) => state.login);
   const {
     //loading: loginLoading,
-    //error: loginError,
+    error: loginError,
     userInfo: loginInfo,
   } = loginData;
 
   const registerData = useSelector((state) => state.register);
   const {
     //loading: registerLoading,
-    //error: registerError,
+    error: registerError,
     userInfo: registerInfo,
   } = registerData;
 
-  const propertyData = useSelector((state) => state.addProperty);
-  const { userInfo: propertyInfo } = propertyData;
+  /* const propertyData = useSelector((state) => state.addProperty);
+  const { userInfo: propertyInfo } = propertyData; */
 
   //set initial validation to false
   useEffect(() => {
@@ -65,12 +65,9 @@ const Form = (props) => {
         return { name: entry.name, value: event.target.value };
       else return { name: entry.name, value: entry.value };
     });
-
     setData([...arr]);
-
     if (location.pathname !== "/login")
       setPassMatch(arr[3].value === arr[4].value);
-
     let array = [];
 
     array = arr.map((entry) => {
@@ -80,32 +77,25 @@ const Form = (props) => {
     });
     setFieldsValid([...array]);
   };
+
   //on submit
   const handleSubmit = () => {
     location.pathname === "/register" && props.handleRegister(data);
     location.pathname === "/login" && props.handleLogin(data);
-    location.pathname === "/dashboard" && props.handleAddProperty(data);
+    /* location.pathname === "/dashboard" && props.handleAddProperty(data); */
   };
   //on Submit success
   useEffect(() => {
-    if (loginInfo && location.pathname == "/login") {
+    if (loginInfo && location.pathname === "/login") {
       history.push("/");
     }
-    if (registerInfo && location.pathname == "/register") {
-      history.push("/");
+    if (registerInfo && location.pathname === "/register") {
+      history.push("/login");
     }
-    if (propertyInfo && location.pathname == "/dashboard") {
+    /* if (propertyInfo && location.pathname == "/dashboard") {
       history.push("/");
-    }
-  }, [
-    loginData,
-    registerData,
-    history,
-    loginInfo,
-    registerInfo,
-    propertyInfo,
-    location,
-  ]);
+    } */
+  }, [loginData, registerData, history, loginInfo, registerInfo, location]);
 
   useEffect(() => {
     let valid = true;
@@ -124,21 +114,22 @@ const Form = (props) => {
       <h3>{props.data.title}</h3>
       <h5>{props.data.subtitle}</h5>
       <form>
-        {props.data.inputFields.map((entry, index) => {
-          return (
-            <InputField
-              variant={
-                (location.pathname === "/login" && "0") ||
-                (index === 2 && "0") ||
-                (index === 5 && "0") ||
-                "1"
-              }
-              key={entry.name}
-              data={entry}
-              onChange={(e) => handleChange(e)}
-            ></InputField>
-          );
-        })}
+        {props.data.inputFields &&
+          props.data.inputFields.map((entry, index) => {
+            return (
+              <InputField
+                variant={
+                  (location.pathname === "/login" && "0") ||
+                  (index === 2 && "0") ||
+                  (index === 5 && "0") ||
+                  "1"
+                }
+                key={entry.name}
+                data={entry}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+            );
+          })}
         {location.pathname !== "/login" && (
           <label className="accept-terms">
             <input
@@ -171,11 +162,11 @@ const Form = (props) => {
             <Link to={props.data.content[2]}> {props.data.content[1]}</Link>
           </p>
         ) : null}
-        {/* {
+        {
           <p className="error">
             {loginError ? loginError : registerError ? registerError : ""}
           </p>
-        } */}
+        }
 
         {/* {loginLoading || registerLoading ? (
           <Loader />

@@ -24,13 +24,13 @@ const Register = () => {
     <div className="register">
       {mobile && (
         <Button click={() => history.push("/")} variant="8">
-          <i class="fa fa-chevron-left"></i>
+          <i className="fa fa-chevron-left"></i>
         </Button>
       )}
       <div className="left">
         {!mobile && (
           <Button click={() => history.push("/")} variant="8">
-            <i class="fa fa-chevron-left"></i>
+            <i className="fa fa-chevron-left"></i>
             Back to home
           </Button>
         )}

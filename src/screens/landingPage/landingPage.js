@@ -63,6 +63,7 @@ const LandingPage = () => {
   };
 
   useEffect(async () => {
+    window.scrollTo(0, 0);
     await fetchPropertiesSarajevo();
     await fetchApartments();
     await fetchPropertiesBosnia();

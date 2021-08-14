@@ -1,0 +1,33 @@
+.result-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 15px;
+  transition: 0.15s ease-in;
+  color: black;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
+  img {
+    filter: brightness(45%);
+    height: 300px;
+    width: 300px;
+    background-size: contain;
+    border-radius: 15px;
+    background-color: black;
+    margin-right: 20px;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .result-title {
+    color: var(--black);
+  }
+  &:hover {
+    transform: translateY(10px) scale(1.05);
+    transition: 0.2s ease-in;
+  }
+}

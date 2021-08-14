@@ -7,6 +7,7 @@ import Property from "./screens/property/property";
 import Logout from "./screens/login/logout";
 import UserDashboard from "./screens/user/user-dashboard/UserDashboard";
 import UserSettings from "./screens/user/user-settings/UserSettings";
+import SearchedProperties from "./screens/searchedProperties/searchedProperties";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/dashboard/mydashboard" component={UserDashboard} />
         <Route exact path="/dashboard/settings" component={UserSettings} />
+        <Route exact path="/search" component={SearchedProperties} />
       </Switch>
     </BrowserRouter>
   );

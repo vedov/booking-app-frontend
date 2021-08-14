@@ -16,7 +16,7 @@ const Map = ({
     const initializeMap = ({ setMap, mapContainer }) => {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
-        style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+        style: "mapbox://styles/vedov/cksbvw66y5an817qupf9zqrwx", // stylesheet location
         center: [lat, lng],
         zoom: 12,
         attributionControl: false,
@@ -30,6 +30,7 @@ const Map = ({
       })
         .setLngLat([lat, lng])
         .addTo(map);
+
       const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
@@ -44,7 +45,7 @@ const Map = ({
       map.on("load", () => {
         geocoder.on("result", function (e) {
           const marker = new mapboxgl.Marker({
-            color: "#f29f4b",
+            color: "orange",
           })
             .setLngLat(e.result.center)
             .addTo(map);
@@ -71,7 +72,6 @@ const Map = ({
         });
 
         setMap(map);
-
         map.resize();
       });
     };

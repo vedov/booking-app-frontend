@@ -8,11 +8,10 @@ import Button from "../../components/button/button";
 import InputField from "../../components/input-field/inputField";
 const UserInfoForm = (props) => {
   const userID = jwtDecode(localStorage.getItem("token")).user.id;
-  const history = useHistory();
-  const location = useLocation();
-  const [data, setData] = useState();
+
   const userInfo = props.userInfo;
   const [fullName, setFullName] = useState(userInfo.fullName);
+  const [userImage, setUserImage] = useState("");
   const editUserInfo = async () => {
     return await axios
       .patch(
@@ -20,12 +19,29 @@ const UserInfoForm = (props) => {
           `/user/${userID}?secret_token=` +
           localStorage.getItem("token"),
         {
-          fullName: "Vedad Vreto",
+          fullName: fullName,
+          userImage: userImage,
         }
       )
       .then((res) => {
         console.log(res.data.user);
       });
+  };
+  const handleImageSelect = async (event) => {
+    let array = [];
+    const formData = new FormData();
+    formData.append("file", event.target.files[0]);
+    formData.append("upload_preset", "f9k4o6vj");
+    formData.append("api_key", "236325287598512");
+    await axios
+      .post("https://api.cloudinary.com/v1_1/dl84dqtbq/image/upload", formData)
+      .then((res) => {
+        console.log("gurnuo");
+        console.log(res.data);
+        array.push(res.data.secure_url);
+        console.log(res.data.secure_url);
+      });
+    setUserImage(array);
   };
   useEffect(() => {
     console.log(userInfo);
@@ -54,6 +70,10 @@ const UserInfoForm = (props) => {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
             ></input>
+          </div>
+          <div className="image-input">
+            <label>Upload a Profile Image</label>
+            <input type="file" onChange={(e) => handleImageSelect(e)}></input>
           </div>
           {/* <label>Password</label>
           <input></input>

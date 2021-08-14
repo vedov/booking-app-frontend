@@ -1,16 +1,23 @@
 .find-property-wrapper {
   display: flex;
+  width: fit-content;
+  margin: auto;
   .find-property-card {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 75vw;
     margin: auto;
-    //padding: 10px 20px;
-    border-radius: 25px;
+    align-items: center;
+    border-radius: 15px;
     background-color: var(--white);
     & > div {
       margin: 10px;
       padding: 5px;
+    }
+    .field {
+      h6 {
+        margin-bottom: 10px;
+      }
     }
   }
 }

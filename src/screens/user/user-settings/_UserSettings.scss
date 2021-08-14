@@ -2,17 +2,60 @@
   margin-left: 20px;
 }
 
-.text-field {
+.user-card {
   display: flex;
-  flex-direction: row;
-  margin-left: 20px;
+  flex-direction: column;
+  width: fit-content;
+  background-color: var(--white);
+  box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  .user-image {
+    margin: auto;
+    img {
+      margin: 20px 0 20px 20px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: var(--yellow);
+      border: none;
+    }
+  }
+  .user-info {
+    padding: 20px 40px 20px 20px;
+    .label {
+      font-family: "Coolvetica";
+      color: var(--light-gray);
+    }
+    .text {
+      margin-left: 20px;
+      font-family: "Coolvetica";
+      color: var(--black);
+    }
+  }
+  .text-field {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+  }
 }
-.label {
-  font-family: "Coolvetica";
-  color: var(--light-gray);
-}
-.text {
-  margin-left: 20px;
-  font-family: "Coolvetica";
-  color: var(--black);
+.image-input {
+  display: flex;
+  flex-direction: column;
+  label {
+    color: var(--light-gray);
+    margin: 8px 0;
+  }
+  input {
+    padding: 10px;
+    margin: 8px 0;
+    background: var(--lightst-gray);
+    border: none;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: all 0.1s ease-in;
+    &:focus {
+      outline: none;
+      border: 2px solid var(--yellow);
+    }
+  }
 }

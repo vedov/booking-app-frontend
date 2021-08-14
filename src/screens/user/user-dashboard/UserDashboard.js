@@ -41,6 +41,7 @@ const UserDashboard = () => {
     fetchUserProperties();
     if (location.pathname === "/dashboard") {
       setData(AddPropertyConstants);
+      window.scrollTo(0, 0);
     }
   }, [location.pathname]);
   return (

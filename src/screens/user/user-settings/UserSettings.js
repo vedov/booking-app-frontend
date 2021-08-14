@@ -13,6 +13,7 @@ const UserSettings = () => {
   const [userInfo, setUserInfo] = useState([]);
   const userID = jwtDecode(localStorage.getItem("token")).user.id;
   const [editProfile, setEditProfile] = useState(false);
+
   const fetchUserInfo = async () => {
     return await axios
       .get(
@@ -43,10 +44,12 @@ const UserSettings = () => {
           {userInfo && (
             <div className="col">
               {editProfile ? (
-                <UserInfoForm
-                  setEditProfile={setEditProfile}
-                  userInfo={userInfo}
-                />
+                <>
+                  <UserInfoForm
+                    setEditProfile={setEditProfile}
+                    userInfo={userInfo}
+                  />
+                </>
               ) : (
                 <>
                   <div className="row">
@@ -59,18 +62,25 @@ const UserSettings = () => {
                     </Button>
                   </div>
                   <hr></hr>
-                  <h5 className="greeting"> Your Profile</h5>
-                  <div className="text-field">
-                    <p className="label">Full Name: </p>
-                    <p className="text">{userInfo.fullName} </p>
-                  </div>
-                  <div className="text-field">
-                    <p className="label">Email: </p>
-                    <p className="text">{userInfo.email} </p>
-                  </div>
-                  <div className="text-field">
-                    <p className="label">Date Joined: </p>
-                    <p className="text">{userInfo.dateJoined} </p>
+                  <div className="user-card">
+                    <h5 className="greeting"> Your Profile</h5>
+                    <div className="user-image">
+                      <img src={userInfo.userImage}></img>
+                    </div>
+                    <div className="user-info">
+                      <div className="text-field">
+                        <p className="label">Full Name: </p>
+                        <p className="text">{userInfo.fullName} </p>
+                      </div>
+                      <div className="text-field">
+                        <p className="label">Email: </p>
+                        <p className="text">{userInfo.email} </p>
+                      </div>
+                      <div className="text-field">
+                        <p className="label">Date Joined: </p>
+                        <p className="text">{userInfo.dateJoined} </p>
+                      </div>
+                    </div>
                   </div>
                 </>
               )}

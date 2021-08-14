@@ -8,6 +8,7 @@ const Button = ({
   type,
   variant,
   children,
+  icon,
 }) => {
   return (
     <button
@@ -32,7 +33,8 @@ const Button = ({
       }
     >
       <span>{children}</span>
-      {arrow ? <i class="fa fa-chevron-right"></i> : null}
+      {arrow ? <i className="fa fa-chevron-right"></i> : null}
+      {icon ? <i className={icon}></i> : null}
     </button>
   );
 };
