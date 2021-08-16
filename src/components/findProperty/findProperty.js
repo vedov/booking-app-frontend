@@ -24,7 +24,9 @@ const FindProperty = () => {
         </div>
         <div className="field">
           <br />
-          <Button variant="2">Search</Button>
+          <Link to="/search">
+            <Button variant="2">Search</Button>
+          </Link>
         </div>
       </div>
     </div>

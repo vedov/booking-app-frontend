@@ -11,6 +11,14 @@
       margin: 20px;
       padding: 5px;
     }
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      Button {
+        transform: scale(0.75);
+      }
+    }
     .info {
       display: flex;
       flex-direction: row;

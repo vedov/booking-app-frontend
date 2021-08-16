@@ -1,0 +1,21 @@
+input {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: var(--lightst-gray);
+  border: none;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: all 0.1s ease-in;
+  &:focus {
+    outline: none;
+    border: 2px solid var(--yellow);
+  }
+}
+.edit-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  font-weight: 400;
+}
