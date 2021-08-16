@@ -20,11 +20,20 @@
   }
 
   p {
+    max-width: 300px;
     font-size: 1em;
   }
 
-  .result-title {
+  .result-content {
     color: var(--black);
+    .result-bottom {
+      width: 100%;
+      margin: 25% auto 0 auto;
+      Button {
+        width: 100%;
+        margin: 0;
+      }
+    }
   }
   &:hover {
     transform: translateY(10px) scale(1.05);

@@ -10,11 +10,14 @@ const SearchResult = (props) => {
     <Link to={"/property/" + props.id}>
       <div className="result-wrapper">
         <img src={props.image} />
-        <div className="result-title">
+        <div className="result-content">
           <h5>{props.name}</h5>
           <p>{props.description}</p>
           <p>{location}</p>
-          <h6>$ {props.pricePerNight} per Night</h6>
+          <h6>${props.pricePerNight} per Night</h6>
+          <div className="result-bottom">
+            <Button variant="2">Check Availible Dates</Button>
+          </div>
         </div>
       </div>
     </Link>
