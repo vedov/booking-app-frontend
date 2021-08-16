@@ -11,24 +11,18 @@ const UserInfoForm = (props) => {
 
   const userInfo = props.userInfo;
   const [fullName, setFullName] = useState(userInfo.fullName);
-  const [userImage, setUserImage] = useState("");
+  const [profileImage, setProfileImage] = useState();
   const editUserInfo = async () => {
     return await axios
-      .patch(
-        process.env.REACT_APP_BACKEND_URL +
-          `/user/${userID}?secret_token=` +
-          localStorage.getItem("token"),
-        {
-          fullName: fullName,
-          userImage: userImage,
-        }
-      )
+      .patch(process.env.REACT_APP_BACKEND_URL + `/user/${userID}`, {
+        fullName: fullName,
+        userImage: profileImage,
+      })
       .then((res) => {
         console.log(res.data.user);
       });
   };
   const handleImageSelect = async (event) => {
-    let array = [];
     const formData = new FormData();
     formData.append("file", event.target.files[0]);
     formData.append("upload_preset", "f9k4o6vj");
@@ -38,10 +32,9 @@ const UserInfoForm = (props) => {
       .then((res) => {
         console.log("gurnuo");
         console.log(res.data);
-        array.push(res.data.secure_url);
+        setProfileImage(res.data.secure_url);
         console.log(res.data.secure_url);
       });
-    setUserImage(array);
   };
   useEffect(() => {
     console.log(userInfo);
@@ -54,8 +47,8 @@ const UserInfoForm = (props) => {
         <Button
           variant="2"
           click={() => {
-            props.setEditProfile(false);
             editUserInfo();
+            props.setEditProfile(false);
           }}
         >
           Save Edits
