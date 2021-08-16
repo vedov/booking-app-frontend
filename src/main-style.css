@@ -440,6 +440,31 @@
   transition: 0.5s;
 }
 
+.disabled-button {
+  padding: 10px 30px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  margin: 0 10px;
+  pointer-events: none;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+  color: var(--white);
+  background: var(--light-gray);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(161, 133, 105, 0.2);
+          box-shadow: 0px 0px 10px 0px rgba(161, 133, 105, 0.2);
+}
+
+.disabled-button:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  background-color: var(--white);
+  color: var(--yellow);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
 .blue-slide-button {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -509,16 +534,6 @@
 .blue-slide-button:active {
   -webkit-transform: scale(1);
           transform: scale(1);
-}
-
-.disabled-blue-button {
-  width: 200px;
-  font-size: 1.25em;
-  background-color: var(--lightst-gray);
-  color: black;
-  border: none;
-  padding: 10px 0;
-  border-radius: 22px;
 }
 
 .text-button {
@@ -1566,6 +1581,39 @@ form {
           transform: translateY(10px) scale(1.05);
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
+}
+
+.progress-bar-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.progress-bar-wrapper .progress-bar {
+  position: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 0.7em;
+  background: -webkit-gradient(linear, left top, right top, from(#f29f4b), to(#ffbe7d));
+  background: linear-gradient(90deg, #f29f4b, #ffbe7d);
+  border-radius: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.progress-bar-wrapper span {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  padding-top: 10px;
+  font-size: 0.7em;
+  font-weight: 600;
 }
 
 .login {

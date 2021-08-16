@@ -11,6 +11,7 @@ import SelectField from "../../components/select-field/selectField";
 import ReactChipInput from "react-chip-input";
 import Map from "../Map/Map";
 import CheckField from "../checkField/checkField";
+import ProgressBar from "../progressBar/progressBar";
 
 const AddPropertyForm = (props) => {
   const location = useLocation();
@@ -22,8 +23,11 @@ const AddPropertyForm = (props) => {
   const propertyData = useSelector((state) => state.addProperty);
   const [selectValue, setSelectValue] = useState("Lodge");
   const [propertyImages, setPropertyImages] = useState([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadCounter, setUploadCounter] = useState(0);
+  const [uploaded, setUploaded] = useState(false);
   let amenities = [];
-  let imageCounter = 0;
 
   const property = props.data.inputFields;
   const {
@@ -81,6 +85,8 @@ const AddPropertyForm = (props) => {
   const handleImageSelect = async (event) => {
     let array = [];
     for (let i = 0; i < event.target.files.length; i++) {
+      setUploading(true);
+      console.log(i, uploading);
       const formData = new FormData();
       formData.append("file", event.target.files[i]);
       formData.append("upload_preset", "f9k4o6vj");
@@ -88,17 +94,29 @@ const AddPropertyForm = (props) => {
       await axios
         .post(
           "https://api.cloudinary.com/v1_1/dl84dqtbq/image/upload",
-          formData
+          formData,
+          {
+            onUploadProgress: (progressEvent) => {
+              if (progressEvent.lengthComputable) {
+                let percentCompleted = Math.round(
+                  (progressEvent.loaded * 100) / progressEvent.total
+                );
+                console.log(percentCompleted);
+                setUploadProgress(percentCompleted);
+                setUploadCounter(i + 1);
+              }
+            },
+          }
         )
         .then((res) => {
           console.log("gurnuo");
           console.log(res.data);
-          imageCounter++;
           array.push(res.data.secure_url);
-          console.log(imageCounter, res.data.secure_url);
+          console.log(uploadCounter, res.data.secure_url);
         });
     }
     setPropertyImages(array);
+    setUploaded(true);
   };
 
   //on submit
@@ -177,6 +195,12 @@ const AddPropertyForm = (props) => {
                   onChange={(e) => handleImageSelect(e)}
                   multiple
                 ></input>
+                {uploading && uploading ? (
+                  <ProgressBar
+                    progress={uploadProgress}
+                    counter={uploadCounter}
+                  ></ProgressBar>
+                ) : null}
               </div>
               {/* <InputField
                 variant="0"
@@ -229,7 +253,7 @@ const AddPropertyForm = (props) => {
                 onChange={(e) => handleChange(e)}
               ></InputField>
               <Button
-                variant="2"
+                variant={uploaded ? "2" : "4"}
                 type="button"
                 customStyle={{
                   margin: "10px 0",
