@@ -28,7 +28,8 @@ const Property = () => {
       )
       .then((res) => {
         setProperty(res.data);
-        if (res.data.host.email == userMail) setEditButton(true);
+        if (res.data && res.data.host && res.data.host.email == userMail)
+          setEditButton(true);
       });
   };
   useEffect(async () => {
@@ -48,10 +49,12 @@ const Property = () => {
             <div className="title">
               <h4>{property.name && property.name}</h4>
               {editButton ? (
-                <Button variant="2" click={() => setEditProperty(true)}>
+                <Button variant="1" click={() => setEditProperty(true)}>
                   Edit Property
                 </Button>
-              ) : null}
+              ) : (
+                <Button variant="2">Book Property</Button>
+              )}
             </div>
             <div className="info">
               <div className="left">
