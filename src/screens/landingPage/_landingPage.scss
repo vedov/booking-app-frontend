@@ -1,12 +1,21 @@
 .landing-page-wrapper {
-  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   box-sizing: border-box;
   background-color: var(--whiteish);
   .landing-page-content {
     padding: 20px 2%;
+
     .landing-page-cards {
+      & > * {
+        margin: 10px;
+      }
       display: flex;
-      justify-content: space-between;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      max-width: 100%;
     }
   }
 }

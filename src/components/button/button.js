@@ -8,6 +8,7 @@ const Button = ({
   type,
   variant,
   children,
+  icon,
 }) => {
   return (
     <button
@@ -16,11 +17,10 @@ const Button = ({
       disabled={disabled}
       type={type ? type : "submit"}
       className={
-        (disabled && variant === "1" && "disabled-blue-button") ||
         (variant === "1" && "white-button") ||
         (variant === "2" && "yellow-button") ||
         (variant === "3" && "text-button") ||
-        (variant === "4" && "blue-outline-button") ||
+        (variant === "4" && "disabled-button") ||
         (variant === "5" && "white-blob-button") ||
         (variant === "6" && "blue-blob-button") ||
         (variant === "7" && "blue-slide-button") ||
@@ -32,7 +32,8 @@ const Button = ({
       }
     >
       <span>{children}</span>
-      {arrow ? <i class="fa fa-chevron-right"></i> : null}
+      {arrow ? <i className="fa fa-chevron-right"></i> : null}
+      {icon ? <i className={icon}></i> : null}
     </button>
   );
 };

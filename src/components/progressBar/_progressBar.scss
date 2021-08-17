@@ -1,0 +1,19 @@
+.progress-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  .progress-bar {
+    position: inherit;
+    display: flex;
+    height: 0.7em;
+    background: linear-gradient(90deg, #f29f4b, #ffbe7d);
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  span {
+    width: fit-content;
+    position: relative;
+    padding-top: 10px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+}

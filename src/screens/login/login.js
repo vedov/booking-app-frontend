@@ -10,18 +10,18 @@ import useMediaQuery from "../../useMediaQuery";
 const Login = () => {
   const history = useHistory();
   const mobile = useMediaQuery("(max-width: 768px)");
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   return (
     <div className="login">
       {mobile && (
         <Button click={() => history.push("/")} variant="8">
-          <i class="fa fa-chevron-left"></i>
+          <i className="fa fa-chevron-left"></i>
         </Button>
       )}
       <div className="left">
         {!mobile && (
           <Button click={() => history.push("/")} variant="8">
-            <i class="fa fa-chevron-left"></i>
+            <i className="fa fa-chevron-left"></i>
             Back to Home
           </Button>
         )}
@@ -29,8 +29,7 @@ const Login = () => {
 
       <Form
         handleLogin={(data) => {
-          //dispatch(login({ email: data[0].value, password: data[1].value }));
-          console.log({ email: data[0].value, password: data[1].value });
+          dispatch(login({ email: data[0].value, password: data[1].value }));
         }}
         data={LoginConstants}
       ></Form>

@@ -15,19 +15,22 @@ const Form = (props) => {
   const [fieldsValid, setFieldsValid] = useState([]);
   const [terms, setTerms] = useState(false);
   const [passMatch, setPassMatch] = useState(false);
-  //const loginData = useSelector((state) => state.login);
-  /* const {
-    loading: loginLoading,
+  const loginData = useSelector((state) => state.login);
+  const {
+    //loading: loginLoading,
     error: loginError,
     userInfo: loginInfo,
-  } = loginData; */
+  } = loginData;
 
-  /* const registerData = useSelector((state) => state.register);
+  const registerData = useSelector((state) => state.register);
   const {
-    loading: registerLoading,
+    //loading: registerLoading,
     error: registerError,
     userInfo: registerInfo,
-  } = registerData; */
+  } = registerData;
+
+  /* const propertyData = useSelector((state) => state.addProperty);
+  const { userInfo: propertyInfo } = propertyData; */
 
   //set initial validation to false
   useEffect(() => {
@@ -66,6 +69,7 @@ const Form = (props) => {
     if (location.pathname !== "/login")
       setPassMatch(arr[3].value === arr[4].value);
     let array = [];
+
     array = arr.map((entry) => {
       if (entry.value !== "") {
         return { name: entry.name, valid: true };
@@ -73,30 +77,25 @@ const Form = (props) => {
     });
     setFieldsValid([...array]);
   };
+
   //on submit
   const handleSubmit = () => {
-    (location.pathname === "/register-user" ||
-      location.pathname === "/register-doctor") &&
-      props.handleRegister(data);
+    location.pathname === "/register" && props.handleRegister(data);
     location.pathname === "/login" && props.handleLogin(data);
+    /* location.pathname === "/dashboard" && props.handleAddProperty(data); */
   };
   //on Submit success
-  /* useEffect(() => {
-    let role;
-    if (loginInfo) {
-      role = jwtDecode(loginInfo && loginInfo.token);
-      role = role.user.role;
-      if (role === 0) history.push("/patient-dashboard/my-dashboard");
-      else if (role === 1) history.push("/admin-dashboard/my-dashboard");
-      else if (role === 2) history.push("/doctor-dashboard/my-dashboard");
+  useEffect(() => {
+    if (loginInfo && location.pathname === "/login") {
+      history.push("/");
     }
-    if (registerInfo && location.pathname !== "/login") {
-      if ((location.pathname = "/register-user"))
-        history.push("/register-user/complete");
-      if ((location.pathname = "/register-doctor"))
-        history.push("/register-doctor/complete");
+    if (registerInfo && location.pathname === "/register") {
+      history.push("/login");
     }
-  }, [loginData, registerData, history, loginInfo, registerInfo, location]); */
+    /* if (propertyInfo && location.pathname == "/dashboard") {
+      history.push("/");
+    } */
+  }, [loginData, registerData, history, loginInfo, registerInfo, location]);
 
   useEffect(() => {
     let valid = true;
@@ -115,21 +114,22 @@ const Form = (props) => {
       <h3>{props.data.title}</h3>
       <h5>{props.data.subtitle}</h5>
       <form>
-        {props.data.inputFields.map((entry, index) => {
-          return (
-            <InputField
-              variant={
-                (location.pathname === "/login" && "0") ||
-                (index === 2 && "0") ||
-                (index === 5 && "0") ||
-                "1"
-              }
-              key={entry.name}
-              data={entry}
-              onChange={(e) => handleChange(e)}
-            ></InputField>
-          );
-        })}
+        {props.data.inputFields &&
+          props.data.inputFields.map((entry, index) => {
+            return (
+              <InputField
+                variant={
+                  (location.pathname === "/login" && "0") ||
+                  (index === 2 && "0") ||
+                  (index === 5 && "0") ||
+                  "1"
+                }
+                key={entry.name}
+                data={entry}
+                onChange={(e) => handleChange(e)}
+              ></InputField>
+            );
+          })}
         {location.pathname !== "/login" && (
           <label className="accept-terms">
             <input
@@ -162,9 +162,11 @@ const Form = (props) => {
             <Link to={props.data.content[2]}> {props.data.content[1]}</Link>
           </p>
         ) : null}
-        {/* <p className="error">
-          {loginError ? loginError : registerError ? registerError : ""}
-        </p> */}
+        {
+          <p className="error">
+            {loginError ? loginError : registerError ? registerError : ""}
+          </p>
+        }
 
         {/* {loginLoading || registerLoading ? (
           <Loader />

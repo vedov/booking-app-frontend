@@ -2,7 +2,7 @@ const LoginConstants = {
   title: "Login",
   subtitle: "Welcome Back!",
   buttonContent: "Login",
-  content: ["Don't Have an Account?", "Create One", "/register-choice"],
+  content: ["Don't Have an Account?", "Create One", "/register"],
 
   inputFields: [
     {

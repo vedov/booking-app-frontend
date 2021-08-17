@@ -1,0 +1,22 @@
+.searched-properties-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--whiteish);
+  .container {
+    margin: 20px 50px;
+    .search-results {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      & > * {
+        margin: 20px auto;
+      }
+      a {
+        width: fit-content;
+        text-decoration: none;
+      }
+    }
+  }
+}

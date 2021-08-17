@@ -35,7 +35,7 @@ const UserRegisterForm = {
     {
       label: "Confirm Password",
       type: "password",
-      name: "confirm_password",
+      name: "password2",
       placeholder: "",
       required: true,
     },

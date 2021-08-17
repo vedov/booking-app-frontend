@@ -1,16 +1,24 @@
 .card-wrapper {
   display: flex;
   flex-direction: column;
-  width: calc(25vw - 2.5%);
-  height: 400px;
+  height: 300px;
+  width: 300px;
   border-radius: 15px;
   position: relative;
-  background-color: var(--white);
+  background-color: black;
   transition: 0.15s ease-in;
+
   cursor: pointer;
   img {
-    height: 400px;
+    filter: brightness(45%);
+    height: 300px;
+    width: 100%;
+    background-size: contain;
     border-radius: 15px;
+  }
+
+  p {
+    font-size: 1em;
   }
 
   .card-title {
@@ -20,7 +28,39 @@
     color: var(--white);
   }
   &:hover {
-    transform: translateY(10px) scale(1.1);
+    transform: translateY(10px) scale(1.05);
     transition: 0.2s ease-in;
+  }
+}
+.medium {
+  height: 200px;
+  width: 200px;
+  img {
+    height: 200px;
+  }
+}
+.small {
+  height: 150px;
+  width: 150px;
+  border-radius: 10px;
+  position: relative;
+  background-color: black;
+  img {
+    filter: brightness(45%);
+    height: 150px;
+    width: 100%;
+    background-size: contain;
+    border-radius: 10px;
+  }
+  p {
+    font-size: 0.8em;
+  }
+
+  .card-title {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: var(--white);
+    font-size: 0.8em;
   }
 }

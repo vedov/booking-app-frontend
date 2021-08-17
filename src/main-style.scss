@@ -4,12 +4,25 @@
 @import "components/button/button";
 @import "components/form/form";
 @import "components/input-field/inputField";
+@import "components/select-field/selectField";
 @import "components/navLink/navLink";
 @import "components/findProperty/findProperty";
 @import "components/card/card";
+@import "components/panel-navigation/PanelNavigation";
+@import "components/addPropertyForm/addProperty";
+@import "components/Map/Map";
+@import "components/checkField/checkField";
+@import "components/userInfoForm/userInfoForm";
+@import "components/searchResult/searchResult";
+@import "components/progressBar/progressBar";
+@import "components/editProperty/editProperty";
 @import "screens/login/login";
 @import "screens/register/register";
 @import "screens/landingPage/landingPage";
+@import "screens/property/property";
+@import "screens/user/user-dashboard/UserDashboard";
+@import "screens/user/user-settings/UserSettings";
+@import "screens/searchedProperties/searchedProperties";
 
 @font-face {
   font-family: "Coolvetica";
@@ -27,7 +40,7 @@
   --blue: #2370c8;
   --light-blue: #d3e0f5;
   --black: #2b2b2b;
-  --whiteish: #f4f4f4;
+  --whiteish: #fcfcfc;
   --lightst-gray: #f2f2f2;
   --light-gray: #6b6b6b;
   --gray: #4f4f4f;
