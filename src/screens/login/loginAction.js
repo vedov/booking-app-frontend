@@ -30,7 +30,7 @@ export const login =
         type: LOGIN_SUCCESS,
         payload: data,
       });
-
+      console.log(data);
       localStorage.setItem("token", data.token);
     } catch (error) {
       dispatch({
@@ -44,6 +44,6 @@ export const login =
   };
 
 export const logout = () => (dispatch) => {
-  localStorage.removeItem("userInfo");
+  localStorage.removeItem("token");
   dispatch({ type: LOGOUT });
 };

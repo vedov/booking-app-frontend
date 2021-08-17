@@ -67,6 +67,7 @@ const LandingPage = () => {
     await fetchPropertiesSarajevo();
     await fetchApartments();
     await fetchPropertiesBosnia();
+    console.log(localStorage.getItem("token"));
   }, []);
 
   return (

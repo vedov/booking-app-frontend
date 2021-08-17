@@ -77,6 +77,10 @@ const UserSettings = () => {
                         <p className="text">{userInfo.email} </p>
                       </div>
                       <div className="text-field">
+                        <p className="label">Phone Number: </p>
+                        <p className="text">{userInfo.phoneNumber} </p>
+                      </div>
+                      <div className="text-field">
                         <p className="label">Date Joined: </p>
                         <p className="text">{userInfo.dateJoined} </p>
                       </div>

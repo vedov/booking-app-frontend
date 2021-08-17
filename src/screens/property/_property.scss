@@ -32,18 +32,6 @@
       .location {
         color: #6d6d6d;
       }
-      .right {
-        .host {
-          display: flex;
-          flex-direction: column;
-          justify-content: start;
-
-          width: 200px;
-          p {
-            margin: 0 0 2px 0;
-          }
-        }
-      }
     }
     .images {
       display: flex;
@@ -79,7 +67,35 @@
         }
       }
     }
+    .host {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      .host-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        margin-top: 20px;
+        .col-1 {
+          p {
+            font-weight: 600;
+            margin: 5px 0 0 10px;
+          }
+          .col-2 {
+            p {
+              font-size: 0.8em;
+              font-weight: 400;
+            }
+          }
+        }
 
+        img {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+        }
+      }
+    }
     .placeholder-map {
       width: 100%;
       background-color: black;

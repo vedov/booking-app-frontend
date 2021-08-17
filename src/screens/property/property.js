@@ -69,20 +69,6 @@ const Property = () => {
                   </h6>
                 </div>
               </div>
-              <div className="right">
-                <div className="host">
-                  <h6>
-                    {property.host &&
-                      property.host.fullName &&
-                      property.host.fullName}
-                  </h6>
-                  <p>
-                    {property.host &&
-                      property.host.email &&
-                      property.host.email}
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
           <div className="images">
@@ -146,7 +132,27 @@ const Property = () => {
               </div>
             </div>
           </div>
-
+          <div className="host">
+            <h6>About The Host</h6>
+            <div className="host-info">
+              <img src={property.host && property.host.userImage} />
+              <div className="col-1">
+                <p>
+                  {property.host &&
+                    property.host.fullName &&
+                    property.host.fullName}
+                </p>
+                <div className="col-2">
+                  <p>
+                    {property.host &&
+                      property.host.email &&
+                      property.host.email}{" "}
+                  </p>
+                  <p>{property.host && property.host.phoneNumber}</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="map">
             <h6>Location:</h6>
             {property.location && (
