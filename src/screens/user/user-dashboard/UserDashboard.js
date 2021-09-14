@@ -21,9 +21,10 @@ const UserDashboard = () => {
   );
   // DODATI REZERVACIJE KORISNIKA
   const [userProperties, setUserProperties] = useState([]);
+  const [userReservations, setUserReservations] = useState([]);
+  const [reservation, setReservation] = useState({});
   const userID = jwtDecode(localStorage.getItem("token")).user.id;
-  console.log("USERID", userID);
-  const fetchUserProperties = async () => {
+  const fetchUserPropertiesAndReservations = async () => {
     return await axios
       .get(
         process.env.REACT_APP_BACKEND_URL +
@@ -36,12 +37,26 @@ const UserDashboard = () => {
         }
       )
       .then((res) => {
+        let array = [];
+        let allReservations = [];
+        res.data.properties.forEach((element) => {
+          array.push(element.reservations);
+        });
+        array.forEach((element) => {
+          element.forEach((booking) => {
+            if (booking.guest === userID) allReservations.push(booking);
+            console.log(booking);
+          });
+        });
         setUserProperties(res.data.properties);
+        setUserReservations(allReservations);
+        console.log(allReservations);
       });
   };
+
   useEffect(() => {
-    fetchUserProperties();
-    if (location.pathname === "/dashboard") {
+    fetchUserPropertiesAndReservations();
+    if (location.pathname === "/dashboard/mydashboard") {
       setData(AddPropertyConstants);
       window.scrollTo(0, 0);
     }
@@ -94,32 +109,35 @@ const UserDashboard = () => {
                 {userProperties &&
                   userProperties.map((item) => {
                     return (
-                      <Card
-                        id={item._id}
-                        name={item.name}
-                        description={item.propertyType.description}
-                        address={item.location.address}
-                        city={item.location.city}
-                        pricePerNight={item.pricePerNight}
-                        image={item.imageUrls[0]}
-                      ></Card>
+                      <>
+                        <Card
+                          id={item._id}
+                          name={item.name}
+                          description={item.propertyType.description}
+                          address={item.location.address}
+                          city={item.location.city}
+                          pricePerNight={item.pricePerNight}
+                          image={item.imageUrls[0]}
+                        ></Card>
+                      </>
                     );
                   })}
               </div>
               <h5 className="greeting"> Your Bookings</h5>
               <div className="dashboard-cards">
-                {userProperties &&
-                  userProperties.map((item) => {
+                {userReservations &&
+                  userReservations.map((item) => {
                     return (
-                      <Card
-                        id={item._id}
-                        name={item.name}
-                        description={item.propertyType.description}
-                        address={item.location.address}
-                        city={item.location.city}
-                        pricePerNight={item.pricePerNight}
-                        image={item.imageUrls[0]}
-                      ></Card>
+                      <>
+                        <Card
+                          id={item.property}
+                          dateStart={"Dates: " + item.dateStart}
+                          dateEnd={item.dateEnd}
+                          numberOfGuests={
+                            "Number Of Guests: " + item.numberOfGuests
+                          }
+                        ></Card>
+                      </>
                     );
                   })}
               </div>
