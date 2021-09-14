@@ -26,8 +26,6 @@ const Property = () => {
       })
       .then((res) => {
         setProperty(res.data);
-        /* if (res.data && res.data.host && res.data.host.email == userMail)
-          setEditButton(true); */
       });
   };
 
@@ -35,7 +33,6 @@ const Property = () => {
     await fetchProperty();
     window.scrollTo(0, 0);
   }, []);
-  const checkEdit = (editProperty) => {};
   const checkSelected = (editProperty, createReservation) => {
     if (editProperty === true)
       return (
@@ -242,55 +239,67 @@ const Property = () => {
                     })}
                 </div>
               </div>
-              <div className="room">
-                <h6>This Property Features: </h6>
-                <div className="grid">
-                  <p>Bathrooms: {property.bathrooms && property.bathrooms}</p>
-                  <p>Bedrooms: {property.bedrooms && property.bedrooms}</p>
-                  <p>Beds: {property.beds && property.beds}</p>
-                  <p>
-                    Max. number of guests:{" "}
-                    {property.maxGuests && property.maxGuests}
-                  </p>
+              <div className="right">
+                <div className="room">
+                  <h6>This Property Features: </h6>
+                  <div className="grid">
+                    <p>
+                      Bathrooms:{" "}
+                      <h6>{property.bathrooms && property.bathrooms}</h6>
+                    </p>
+                    <p>
+                      Bedrooms:{" "}
+                      <h6>{property.bedrooms && property.bedrooms}</h6>
+                    </p>
+                    <p>
+                      Beds: <h6>{property.beds && property.beds}</h6>
+                    </p>
+                    <p>
+                      Max. number of guests:{" "}
+                      <h6>{property.maxGuests && property.maxGuests}</h6>
+                    </p>
+                    <p>
+                      Price per night:{" "}
+                      <h6>
+                        {" "}
+                        {property.pricePerNight && property.pricePerNight}
+                      </h6>
+                    </p>
+                    <p>
+                      Free Cancellation:
+                      <h6>
+                        {property.freeCancel && property.freeCancel
+                          ? "Yes"
+                          : "No"}
+                      </h6>
+                    </p>
+                  </div>
+                </div>
+                <div className="host">
+                  <h6>About The Host</h6>
+                  <div className="host-info">
+                    <img src={property.host && property.host.userImage} />
+                    <div className="col-1">
+                      <p>
+                        {property.host &&
+                          property.host.fullName &&
+                          property.host.fullName}
+                      </p>
+                      <div className="col-2">
+                        <p>
+                          {property.host &&
+                            property.host.email &&
+                            property.host.email}{" "}
+                        </p>
+                        <p>{property.host && property.host.phoneNumber}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="right">
-              <div className="price">
-                <p>
-                  Price per night:{" "}
-                  {property.pricePerNight && property.pricePerNight}
-                </p>
-              </div>
-              <div className="cancel">
-                <p>
-                  Free Cancellation:
-                  {property.freeCancel && property.freeCancel ? "Yes" : "No"}
-                </p>
-              </div>
-            </div>
           </div>
-          <div className="host">
-            <h6>About The Host</h6>
-            <div className="host-info">
-              <img src={property.host && property.host.userImage} />
-              <div className="col-1">
-                <p>
-                  {property.host &&
-                    property.host.fullName &&
-                    property.host.fullName}
-                </p>
-                <div className="col-2">
-                  <p>
-                    {property.host &&
-                      property.host.email &&
-                      property.host.email}{" "}
-                  </p>
-                  <p>{property.host && property.host.phoneNumber}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div className="map">
             <h6>Location:</h6>
             {property.location && (
