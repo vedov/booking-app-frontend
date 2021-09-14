@@ -20,19 +20,6 @@ const UserInfoForm = (props) => {
   const [uploadProgress, setUploadProgress] = useState(0);
 
   const editUserInfo = async () => {
-    /* if (password == confirmPassword && password != "") {
-      return await axios
-        .patch(process.env.REACT_APP_BACKEND_URL + `/user/${userID}`, {
-          fullName: fullName,
-          userImage: profileImage,
-          password: password,
-          phoneNumber: phoneNumber,
-          email: email,
-        })
-        .then((res) => {
-          console.log(res.data.user);
-        });
-    } else { */
     return await axios
       .patch(process.env.REACT_APP_BACKEND_URL + `/user/${userID}`, {
         fullName: fullName,
@@ -70,13 +57,9 @@ const UserInfoForm = (props) => {
       )
       .then((res) => {
         setProfileImage(res.data.secure_url);
-        console.log(res.data.secure_url);
-        console.log(uploading);
       });
   };
-  useEffect(() => {
-    console.log(userInfo);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -109,22 +92,7 @@ const UserInfoForm = (props) => {
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
-          {/* <div className="field">
-            <label>Password</label>
-            <input
-              value={password}
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-          </div>
-          <div className="field">
-            <label>Confirm Password</label>
-            <input
-              value={confirmPassword}
-              type="password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            ></input>
-          </div> */}
+
           <div className="field">
             <label>Phone Number</label>
             <input
@@ -142,10 +110,6 @@ const UserInfoForm = (props) => {
               <ProgressBar progress={uploadProgress}></ProgressBar>
             ) : null}
           </div>
-          {/* <label>Password</label>
-          <input></input>
-          <label>Confirm Password</label>
-          <input></input> */}
         </form>
       )}
     </>

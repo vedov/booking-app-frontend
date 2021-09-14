@@ -15,7 +15,7 @@ const CheckField = (props) => {
     console.log(checkedName);
     array.push(checkedName);
     setSelectedAmenities(array);
-    props.setAmenities(selectedAmenities);
+    //props.setAmenities(selectedAmenities);
     if (checked) props.selectedAmenities.splice(index, 0, checkedName);
     else props.selectedAmenities.splice(index, 1);
   };

@@ -111,7 +111,7 @@ const AddPropertyForm = (props) => {
   };
 
   //on submit
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     data[1].value = selectValue;
     data[2].value = amenities;
     data[3].value = propertyImages;
@@ -123,16 +123,17 @@ const AddPropertyForm = (props) => {
     data[14].value = mapLocation[5];
     console.log(data);
 
-    if (location.pathname === "/dashboard") props.handleAddProperty(data);
+    if (location.pathname === "/dashboard/mydashboard")
+      props.handleAddProperty(data);
     /*props.setCreateProperty(false);*/
   };
 
   //on Submit success
 
   useEffect(() => {
-    if (propertyInfo && location.pathname == "/dashboard") {
+    if (propertyInfo && location.pathname == "/dashboard/mydashboard") {
       history.push("/");
-    } else history.push("/dashboard/settings");
+    }
   }, [history, propertyInfo, location]);
 
   return (
@@ -170,7 +171,7 @@ const AddPropertyForm = (props) => {
               <div className="amenities-checkboxes">
                 <CheckField
                   key={property[2].name}
-                  data={property[12]}
+                  data={property[2]}
                   selectedAmenities={amenities}
                 ></CheckField>
               </div>

@@ -2784,12 +2784,6 @@ body {
   }
 }
 
-@media only screen and (max-width: 992px) {
-  body {
-    width: 60%;
-  }
-}
-
 h1 {
   font-size: 5.25em;
   font-weight: 900;

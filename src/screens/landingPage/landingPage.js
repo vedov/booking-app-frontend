@@ -91,7 +91,7 @@ const LandingPage = () => {
                   address={item.location.address}
                   city={item.location.city}
                   pricePerNight={item.pricePerNight}
-                  image={item.imageURLs}
+                  image={item.imageUrls[0]}
                   size="small"
                 ></Card>
               );
@@ -111,7 +111,7 @@ const LandingPage = () => {
                   address={item.location.address}
                   city={item.location.city}
                   pricePerNight={item.pricePerNight}
-                  image={item.imageURLs}
+                  image={item.imageUrls[0]}
                   size="small"
                 ></Card>
               );

@@ -128,20 +128,6 @@ const Property = () => {
                   </div>
                 </div>
               </div>
-              <div className="right">
-                <div className="price">
-                  <p>
-                    Price per night:{" "}
-                    {property.pricePerNight && property.pricePerNight}
-                  </p>
-                </div>
-                <div className="cancel">
-                  <p>
-                    Free Cancellation:
-                    {property.freeCancel && property.freeCancel ? "Yes" : "No"}
-                  </p>
-                </div>
-              </div>
             </div>
             <div className="host">
               <h6>About The Host</h6>
@@ -162,6 +148,18 @@ const Property = () => {
                     <p>{property.host && property.host.phoneNumber}</p>
                   </div>
                 </div>
+              </div>
+              <div className="price">
+                <p>
+                  Price per night:{" "}
+                  {property.pricePerNight && property.pricePerNight}
+                </p>
+              </div>
+              <div className="cancel">
+                <p>
+                  Free Cancellation:
+                  {property.freeCancel && property.freeCancel ? "Yes" : "No"}
+                </p>
               </div>
             </div>
             <div className="map">
