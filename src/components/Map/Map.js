@@ -56,11 +56,6 @@ const Map = ({
           const zipCode = location[1].split(" ")[1];
           const city = location[1].split(" ")[2];
           const Country = location[2];
-          console.log(e.result);
-          console.log(address);
-          console.log(city);
-          console.log(zipCode);
-          console.log(Country);
           setMapLocation([
             address,
             city,

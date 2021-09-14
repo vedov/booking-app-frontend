@@ -30,14 +30,11 @@ const PanelNavigation = (props) => {
               hamburger ? "hamburger-content-shown" : "hamburger-content-hidden"
             }
           >
-            {/* <NavLink to="/">
-              <img className="logo" alt="Logo" src={navbarLogo}></img>
-            </NavLink> */}
             <ul>
               {props.data &&
                 props.data.map((entry) => {
                   return (
-                    <li>
+                    <li key={entry.uri}>
                       <NavLink activeClassName="active" to={entry.uri}>
                         <img alt="" src={entry.image}></img>
                         <span>{entry.title}</span>
@@ -56,14 +53,11 @@ const PanelNavigation = (props) => {
               : "panel-navigation panel-navigation-closed"
           }
         >
-          {/* <NavLink to="/">
-            <img className="logo" alt="Logo" src={navbarLogo}></img>
-          </NavLink> */}
           <ul>
             {props.data &&
               props.data.map((entry) => {
                 return (
-                  <li>
+                  <li key={entry.uri}>
                     <NavLink activeClassName="active" to={entry.uri}>
                       <img alt="" src={entry.image}></img>
                       <span>{entry.title}</span>

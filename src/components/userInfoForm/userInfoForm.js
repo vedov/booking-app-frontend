@@ -11,6 +11,10 @@ const UserInfoForm = (props) => {
   const userID = jwtDecode(localStorage.getItem("token")).user.id;
   const userInfo = props.userInfo;
   const [fullName, setFullName] = useState(userInfo.fullName);
+  const [phoneNumber, setPhoneNumber] = useState(userInfo.phoneNumber);
+  /*   const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState(); */
+  const [email, setEmail] = useState(userInfo.email);
   const [profileImage, setProfileImage] = useState();
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -20,11 +24,14 @@ const UserInfoForm = (props) => {
       .patch(process.env.REACT_APP_BACKEND_URL + `/user/${userID}`, {
         fullName: fullName,
         userImage: profileImage,
+        phoneNumber: phoneNumber,
+        email: email,
       })
       .then((res) => {
         console.log(res.data.user);
       });
   };
+
   const handleImageSelect = async (event) => {
     setUploading(true);
     console.log(uploading);
@@ -50,13 +57,9 @@ const UserInfoForm = (props) => {
       )
       .then((res) => {
         setProfileImage(res.data.secure_url);
-        console.log(res.data.secure_url);
-        console.log(uploading);
       });
   };
-  useEffect(() => {
-    console.log(userInfo);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -82,6 +85,24 @@ const UserInfoForm = (props) => {
               onChange={(e) => setFullName(e.target.value)}
             ></input>
           </div>
+          <div className="field">
+            <label>Email</label>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+          </div>
+
+          <div className="field">
+            <label>Phone Number</label>
+            <input
+              type="tel"
+              placeholder="123-45-678-910"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{3}"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            ></input>
+          </div>
           <div className="image-input">
             <label>Upload a Profile Image</label>
             <input type="file" onChange={(e) => handleImageSelect(e)}></input>
@@ -89,10 +110,6 @@ const UserInfoForm = (props) => {
               <ProgressBar progress={uploadProgress}></ProgressBar>
             ) : null}
           </div>
-          {/* <label>Password</label>
-          <input></input>
-          <label>Confirm Password</label>
-          <input></input> */}
         </form>
       )}
     </>

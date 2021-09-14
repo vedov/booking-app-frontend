@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 const CheckField = (props) => {
+  const [amenities, setAmenities] = useState([]);
+  const [selectedAmenities, setSelectedAmenities] = useState([]);
   const data = props.data || {};
+  let array = [];
   const handleChange = (e) => {
     const index = e.target.index;
     const checked = e.target.checked;
@@ -9,56 +12,46 @@ const CheckField = (props) => {
     const checkedValue = e.target.value;
 
     const checkedName = e.target.name;
-    if (checked) props.amenities.splice(index, 0, checkedName);
-    else props.amenities.splice(index, 1);
+    console.log(checkedName);
+    array.push(checkedName);
+    setSelectedAmenities(array);
+    //props.setAmenities(selectedAmenities);
+    if (checked) props.selectedAmenities.splice(index, 0, checkedName);
+    else props.selectedAmenities.splice(index, 1);
   };
 
+  const getAmenities = async () => {
+    return await axios
+      .get(
+        process.env.REACT_APP_BACKEND_URL +
+          `/property/create-new?secret_token=` +
+          localStorage.getItem("token")
+      )
+      .then((res) => {
+        setAmenities(res.data.amenities);
+      });
+  };
+
+  useEffect(() => {
+    getAmenities();
+  });
+
   return (
-    <div
-      className={`${props.variant === "1" && "half"} ${
-        props.variant === "0" && "check-field"
-      }`}
-    >
-      <div>
-        <input
-          type="checkbox"
-          id="kitchen"
-          name="kitchen"
-          onChange={(e) => handleChange(e)}
-          index="0"
-        ></input>
-        <label for="kitchen">Kitchen</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="wifi"
-          name="wifi"
-          index="1"
-          onChange={(e) => handleChange(e)}
-        ></input>
-        <label for="wifi">Wi-Fi</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="parking"
-          name="parking"
-          index="2"
-          onChange={(e) => handleChange(e)}
-        ></input>
-        <label for="parking">Free Parking</label>
-      </div>
-      <div>
-        <input
-          type="checkbox"
-          id="balcony"
-          name="balcony"
-          index="3"
-          onChange={(e) => handleChange(e)}
-        ></input>
-        <label for="balcony">Balcony</label>
-      </div>
+    <div className="check-field">
+      {amenities &&
+        amenities.map((entry, index) => {
+          return (
+            <div key={props.name}>
+              <input
+                type="checkbox"
+                id={entry.name}
+                name={entry.name}
+                onChange={(e) => handleChange(e)}
+              ></input>
+              <label>{entry.name}</label>
+            </div>
+          );
+        })}
     </div>
   );
 };

@@ -11,8 +11,37 @@
     border-radius: 15px;
     background-color: var(--white);
     & > div {
-      margin: 10px;
+      margin: 5px 30px;
       padding: 5px;
+    }
+    .field {
+      width: 30%;
+      h6 {
+        margin-bottom: 10px;
+      }
+    }
+    .search-field {
+      width: 100%;
+      input {
+        margin-top: 5px;
+        width: 90%;
+      }
+    }
+  }
+}
+@media only screen and(max-width:992px) {
+  .find-property-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    border-radius: 15px;
+    background-color: var(--white);
+    & > div {
+      margin: 10px;
+      padding: 20px;
     }
     .field {
       h6 {

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-import jwtDecode from "jwt-decode";
 import InputField from "../../components/input-field/inputField";
 import Button from "../../components/button/button";
 import { useHistory, useLocation } from "react-router";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Loader from "../../components/loader/loader";
 import { useSelector } from "react-redux";
 import SelectField from "../../components/select-field/selectField";
-import ReactChipInput from "react-chip-input";
 import Map from "../Map/Map";
 import CheckField from "../checkField/checkField";
 import ProgressBar from "../progressBar/progressBar";
@@ -22,12 +18,12 @@ const AddPropertyForm = (props) => {
   const [mapLocation, setMapLocation] = useState([]);
   const propertyData = useSelector((state) => state.addProperty);
   const [selectValue, setSelectValue] = useState("Lodge");
+  const [amenities, setAmenities] = useState([]);
   const [propertyImages, setPropertyImages] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadCounter, setUploadCounter] = useState(0);
   const [uploaded, setUploaded] = useState(false);
-  let amenities = [];
 
   const property = props.data.inputFields;
   const {
@@ -35,7 +31,6 @@ const AddPropertyForm = (props) => {
     //error: registerError,
     userInfo: propertyInfo,
   } = propertyData;
-
   //set initial validation to false
   useEffect(() => {
     let array = [];
@@ -43,7 +38,6 @@ const AddPropertyForm = (props) => {
       (entry) =>
         (array = [...array, { name: entry.name, valid: !entry.required }])
     );
-
     setFieldsValid([...array]);
   }, [props.data.inputFields]);
 
@@ -65,11 +59,8 @@ const AddPropertyForm = (props) => {
         return { name: entry.name, value: event.target.value };
       else return { name: entry.name, value: entry.value };
     });
-
     setData([...arr]);
-
     let array = [];
-
     array = arr.map((entry) => {
       if (entry.value !== "") {
         return { name: entry.name, valid: true };
@@ -130,19 +121,20 @@ const AddPropertyForm = (props) => {
     data[12].value = mapLocation[3];
     data[13].value = mapLocation[4];
     data[14].value = mapLocation[5];
-    console.log(property);
     console.log(data);
 
-    /* location.pathname === "/dashboard" && props.handleAddProperty(data); */
-    /* props.setCreateProperty(false); */
+    if (location.pathname === "/dashboard/mydashboard")
+      props.handleAddProperty(data);
+    /*props.setCreateProperty(false);*/
   };
 
-  /* //on Submit success
+  //on Submit success
+
   useEffect(() => {
-    if (propertyInfo && location.pathname == "/dashboard") {
+    if (propertyInfo && location.pathname == "/dashboard/mydashboard") {
       history.push("/");
     }
-  }, [history, propertyInfo, location]); */
+  }, [history, propertyInfo, location]);
 
   return (
     <div className="property-form">
@@ -174,18 +166,13 @@ const AddPropertyForm = (props) => {
                 data={property[0]}
                 onChange={(e) => handleChange(e)}
               ></InputField>
-              <SelectField
-                variant="0"
-                key={property[1].name}
-                data={property[1]}
-                setSelectValue={setSelectValue}
-              ></SelectField>
+              <SelectField setSelectValue={setSelectValue}></SelectField>
               <label>Amenities</label>
               <div className="amenities-checkboxes">
                 <CheckField
                   key={property[2].name}
                   data={property[2]}
-                  amenities={amenities}
+                  selectedAmenities={amenities}
                 ></CheckField>
               </div>
               <div className="image-input">
@@ -202,12 +189,6 @@ const AddPropertyForm = (props) => {
                   ></ProgressBar>
                 ) : null}
               </div>
-              {/* <InputField
-                variant="0"
-                key={property[3].name}
-                data={property[3]}
-                onChange={(e) => handleChange(e)}
-              ></InputField> */}
               <InputField
                 variant="0"
                 key={property[15].name}

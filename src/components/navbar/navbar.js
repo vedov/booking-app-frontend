@@ -2,22 +2,13 @@ import React, { useState, useEffect } from "react";
 import Button from "../button/button";
 import { Link } from "react-router-dom";
 import NavLink from "../navLink/navLink";
-import Routes from "../../constants/routes";
 const Navbar = () => {
-  const routes = [...Routes];
   return (
     <div className="navbar-wrapper">
       <div className="left">
-        <ul className="navbar-list">
-          {routes &&
-            routes.map((entry) => {
-              return (
-                <NavLink route={entry.route}>
-                  <Button variant="3">{entry.title}</Button>
-                </NavLink>
-              );
-            })}
-        </ul>
+        <Link to="/">
+          <Button variant="3">Home</Button>
+        </Link>
       </div>
       <div className="right">
         {localStorage.getItem("token") ? (
