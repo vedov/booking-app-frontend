@@ -16,7 +16,7 @@ const SearchResult = (props) => {
           <p>{location}</p>
           <h6>${props.pricePerNight} per Night</h6>
           <div className="result-bottom">
-            <Button variant="2">Check Availible Dates</Button>
+            <Button variant="2">See More Information</Button>
           </div>
         </div>
       </div>

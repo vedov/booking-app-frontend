@@ -7,16 +7,11 @@ const SearchedProperties = () => {
   const [apartments, setApartments] = useState([]);
   const fetchApartments = async () => {
     return await axios
-      .get(
-        process.env.REACT_APP_BACKEND_URL +
-          "/property/all/type/Apartment?secret_token=" +
-          localStorage.getItem("token"),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .get(process.env.REACT_APP_BACKEND_URL + "/property/all/type/Apartment", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         setApartments(res.data);
         console.log(res.data);

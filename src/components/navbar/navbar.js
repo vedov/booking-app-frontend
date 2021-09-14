@@ -10,9 +10,9 @@ const Navbar = () => {
       <div className="left">
         <ul className="navbar-list">
           {routes &&
-            routes.map((entry) => {
+            routes.map((entry, index) => {
               return (
-                <NavLink route={entry.route}>
+                <NavLink route={entry.route} key={index}>
                   <Button variant="3">{entry.title}</Button>
                 </NavLink>
               );

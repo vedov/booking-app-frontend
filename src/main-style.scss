@@ -16,6 +16,7 @@
 @import "components/searchResult/searchResult";
 @import "components/progressBar/progressBar";
 @import "components/editProperty/editProperty";
+@import "components/createReservation/createReservation";
 @import "screens/login/login";
 @import "screens/register/register";
 @import "screens/landingPage/landingPage";
@@ -57,6 +58,9 @@ body {
   font-size: 16px;
   @media only screen and (max-width: 1400px) {
     font-size: 14px;
+  }
+  @media only screen and(max-width:992px) {
+    width: 60%;
   }
 }
 h1 {

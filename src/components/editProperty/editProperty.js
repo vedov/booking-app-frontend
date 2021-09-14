@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Footer from "../footer/footer";
 import { useLocation } from "react-router-dom";
-import Navbar from "../navbar/navbar";
 import Map from "../Map/Map";
-import jwtDecode from "jwt-decode";
 import Button from "../button/button";
 const EditProperty = (props) => {
   const location = useLocation();

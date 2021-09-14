@@ -14,16 +14,11 @@ const LandingPage = () => {
   const [apartments, setApartments] = useState([]);
   const fetchPropertiesSarajevo = async () => {
     return await axios
-      .get(
-        process.env.REACT_APP_BACKEND_URL +
-          "/property/all/city/Sarajevo?secret_token=" +
-          localStorage.getItem("token"),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .get(process.env.REACT_APP_BACKEND_URL + "/property/all/city/Sarajevo", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         setSarajevoProperties(res.data);
       });
@@ -31,32 +26,22 @@ const LandingPage = () => {
 
   const fetchPropertiesBosnia = async () => {
     return await axios
-      .get(
-        process.env.REACT_APP_BACKEND_URL +
-          "/property/all/country/BiH?secret_token=" +
-          localStorage.getItem("token"),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .get(process.env.REACT_APP_BACKEND_URL + "/property/all/country/BiH", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         setBosniaProperties(res.data);
       });
   };
   const fetchApartments = async () => {
     return await axios
-      .get(
-        process.env.REACT_APP_BACKEND_URL +
-          "/property/all/type/Apartment?secret_token=" +
-          localStorage.getItem("token"),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .get(process.env.REACT_APP_BACKEND_URL + "/property/all/type/Apartment", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         setApartments(res.data);
       });

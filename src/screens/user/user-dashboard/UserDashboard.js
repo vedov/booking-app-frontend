@@ -19,8 +19,10 @@ const UserDashboard = () => {
   const [data, setData] = useState(
     location.pathname === "/dashboard/mydashboard" && AddPropertyConstants
   );
+  // DODATI REZERVACIJE KORISNIKA
   const [userProperties, setUserProperties] = useState([]);
   const userID = jwtDecode(localStorage.getItem("token")).user.id;
+  console.log("USERID", userID);
   const fetchUserProperties = async () => {
     return await axios
       .get(
@@ -45,7 +47,7 @@ const UserDashboard = () => {
     }
   }, [location.pathname]);
   return (
-    <>
+    <div className="dashboard-container">
       <Navbar />
       <div className="dashboard-wrapper">
         <PanelNavigation data={DashboardNavigationConstants} />
@@ -104,11 +106,28 @@ const UserDashboard = () => {
                     );
                   })}
               </div>
+              <h5 className="greeting"> Your Bookings</h5>
+              <div className="dashboard-cards">
+                {userProperties &&
+                  userProperties.map((item) => {
+                    return (
+                      <Card
+                        id={item._id}
+                        name={item.name}
+                        description={item.propertyType.description}
+                        address={item.location.address}
+                        city={item.location.city}
+                        pricePerNight={item.pricePerNight}
+                        image={item.imageUrls[0]}
+                      ></Card>
+                    );
+                  })}
+              </div>
             </div>
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

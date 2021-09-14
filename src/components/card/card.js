@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import Button from "../button/button";
+import React from "react";
 import { Link } from "react-router-dom";
-import image from "../../../src/assets/registerBackground.png";
 
 const Card = (props) => {
   const location = props.address + ", " + props.city;
@@ -10,7 +8,7 @@ const Card = (props) => {
     <Link to={"/property/" + props.id}>
       {props.size && props.size === "small" ? (
         <div className="card-wrapper small">
-          <img src={props.image} />
+          <img src={props.image} alt="" />
           <div className="card-title">
             <h5>{props.name}</h5>
             <p>{location}</p>
@@ -19,7 +17,7 @@ const Card = (props) => {
         </div>
       ) : props.size === "medium" ? (
         <div className="card-wrapper medium">
-          <img src={props.image} />
+          <img src={props.image} alt="" />
           <div className="card-title">
             <h5>{props.name}</h5>
             <p>{props.description}</p>
@@ -28,7 +26,7 @@ const Card = (props) => {
         </div>
       ) : (
         <div className="card-wrapper">
-          <img src={props.image} />
+          <img src={props.image} alt="" />
           <div className="card-title">
             <h5>{props.name}</h5>
             <p>{props.description}</p>

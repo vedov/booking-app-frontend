@@ -36,7 +36,7 @@ const UserSettings = () => {
     await fetchUserInfo();
   }, [editProfile]);
   return (
-    <>
+    <div className="dashboard-container">
       <Navbar />
       <div className="dashboard-wrapper">
         <PanelNavigation data={DashboardNavigationConstants} />
@@ -92,7 +92,7 @@ const UserSettings = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
