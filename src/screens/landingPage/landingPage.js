@@ -52,7 +52,6 @@ const LandingPage = () => {
     await fetchPropertiesSarajevo();
     await fetchApartments();
     await fetchPropertiesBosnia();
-    console.log(localStorage.getItem("token"));
   }, []);
 
   return (
@@ -66,6 +65,7 @@ const LandingPage = () => {
             sarajevoProperties.map((item) => {
               return (
                 <Card
+                  key={item._id}
                   id={item._id}
                   name={item.name}
                   description={item.propertyType.description}

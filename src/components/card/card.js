@@ -11,7 +11,7 @@ const Card = (props) => {
           <img src={props.image} alt="" />
           <div className="card-title">
             {props.name && <h5>{props.name}</h5>}
-            {props.description && <p>{props.description}</p>}
+            {/*  {props.description && <p>{props.description}</p>} */}
             {props.address && props.city && <p>{location}</p>}
             {props.numberOfGuests && <p>{props.numberOfGuests}</p>}
             {props.pricePerNight && <h6>$ {props.pricePerNight} per Night</h6>}
@@ -42,10 +42,13 @@ const Card = (props) => {
             {props.description && <p>{props.description}</p>}
             {props.address && props.city && <p>{location}</p>}
             {props.numberOfGuests && <p>{props.numberOfGuests}</p>}
-            {props.pricePerNight && <h6>$ {props.pricePerNight} per Night</h6>}
             {props.dateStart && props.dateEnd && (
-              <h6>{props.dateStart + " to " + props.dateEnd}</h6>
+              <>
+                <p>Dates:</p>
+                <h5>{props.dateStart + " to " + props.dateEnd}</h5>
+              </>
             )}
+            {props.pricePerNight && <h6>$ {props.pricePerNight} per Night</h6>}
           </div>
         </div>
       )}

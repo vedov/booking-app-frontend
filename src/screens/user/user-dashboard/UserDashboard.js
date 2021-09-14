@@ -19,7 +19,6 @@ const UserDashboard = () => {
   const [data, setData] = useState(
     location.pathname === "/dashboard/mydashboard" && AddPropertyConstants
   );
-  // DODATI REZERVACIJE KORISNIKA
   const [userProperties, setUserProperties] = useState([]);
   const [userReservations, setUserReservations] = useState([]);
 
@@ -38,8 +37,6 @@ const UserDashboard = () => {
       )
       .then((res) => {
         let arrayReservations = [];
-        let valid = false;
-        console.log(res.data);
         res.data.reservations.forEach((element) => {
           const object = {
             propertyId: element.property._id,
@@ -52,13 +49,6 @@ const UserDashboard = () => {
           };
           arrayReservations.push(object);
         });
-        console.log(arrayReservations);
-        /* arrayReservations.forEach((booking) => {
-          booking.forEach((element) => {
-            if (element.guest === userID) valid = true;
-          });
-          if (valid) allReservations.push(booking);
-        }); */
         setUserProperties(res.data.properties);
         setUserReservations(arrayReservations);
       });
@@ -138,13 +128,12 @@ const UserDashboard = () => {
                   userReservations.map((item, index) => {
                     const dateStart = item.dateStart.slice(0, 10);
                     const dateEnd = item.dateEnd.slice(0, 10);
-                    const name = "AAAA";
                     return (
                       <Card
                         id={item.propertyId}
                         name={item.name}
                         image={item.image}
-                        dateStart={"Dates: " + dateStart}
+                        dateStart={dateStart}
                         dateEnd={dateEnd}
                         numberOfGuests={
                           "Number Of Guests: " + item.numberOfGuests

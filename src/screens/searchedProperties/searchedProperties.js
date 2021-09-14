@@ -3,23 +3,28 @@ import axios from "axios";
 import Card from "../../components/card/card";
 import SearchResult from "../../components/searchResult/searchResult";
 import Navbar from "../../components/navbar/navbar";
-const SearchedProperties = () => {
+const SearchedProperties = (props) => {
   const [apartments, setApartments] = useState([]);
-  const fetchApartments = async () => {
+  const propsLink = props.location.state;
+
+  const searchForProperties = async () => {
     return await axios
-      .get(process.env.REACT_APP_BACKEND_URL + "/property/all/type/Apartment", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .get(
+        process.env.REACT_APP_BACKEND_URL +
+          `/property/search?city=${propsLink.city}&numberOfGuests=${propsLink.numberOfGuests}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((res) => {
         setApartments(res.data);
-        console.log(res.data);
       });
   };
   useEffect(async () => {
     window.scrollTo(0, 0);
-    await fetchApartments();
+    searchForProperties();
   }, []);
   return (
     <>
@@ -39,6 +44,7 @@ const SearchedProperties = () => {
                     city={item.location.city}
                     pricePerNight={item.pricePerNight}
                     image={item.imageUrls[0]}
+                    key={item._id}
                   ></SearchResult>
                 );
               })}

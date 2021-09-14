@@ -65,24 +65,40 @@ const UserSettings = () => {
                   <div className="user-card">
                     <h5 className="greeting"> Your Profile</h5>
                     <div className="user-image">
-                      <img src={userInfo.userImage}></img>
+                      <img
+                        src={
+                          userInfo && userInfo.userImage && userInfo.userImage
+                        }
+                      ></img>
                     </div>
                     <div className="user-info">
                       <div className="text-field">
                         <p className="label">Full Name: </p>
-                        <p className="text">{userInfo.fullName} </p>
+                        <p className="text">
+                          {userInfo && userInfo.fullName && userInfo.fullName}{" "}
+                        </p>
                       </div>
                       <div className="text-field">
                         <p className="label">Email: </p>
-                        <p className="text">{userInfo.email} </p>
+                        <p className="text">
+                          {userInfo && userInfo.email && userInfo.email}{" "}
+                        </p>
                       </div>
                       <div className="text-field">
                         <p className="label">Phone Number: </p>
-                        <p className="text">{userInfo.phoneNumber} </p>
+                        <p className="text">
+                          {userInfo &&
+                            userInfo.phoneNumber &&
+                            userInfo.phoneNumber}{" "}
+                        </p>
                       </div>
                       <div className="text-field">
                         <p className="label">Date Joined: </p>
-                        <p className="text">{userInfo.dateJoined} </p>
+                        <p className="text">
+                          {userInfo &&
+                            userInfo.dateJoined &&
+                            userInfo.dateJoined.slice(0, 10)}{" "}
+                        </p>
                       </div>
                     </div>
                   </div>
