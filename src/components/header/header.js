@@ -12,7 +12,12 @@ const Header = () => {
           <h1>WANDERLUST?</h1>
           <h6>Find and book an experience you’ll remember forever.</h6>
           {token && token ? (
-            <Link to="/search">
+            <Link
+              to={{
+                pathname: "/search",
+                state: { city: "Sarajevo", numberOfGuests: 2 },
+              }}
+            >
               <Button variant="2">Start Exploring</Button>
             </Link>
           ) : (

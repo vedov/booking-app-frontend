@@ -110,6 +110,8 @@
       .left {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
         .amenities {
           font-weight: 800;
           font-size: 1em;
@@ -129,14 +131,10 @@
         }
       }
       .right {
-        .price {
-          font-weight: 800;
-          min-width: 300px;
-        }
-        .cancel {
-          font-weight: 800;
-          min-width: 300px;
-        }
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-evenly;
       }
     }
   }
@@ -262,10 +260,6 @@
             column-gap: 0;
             row-gap: 0;
           }
-        }
-        .right {
-          margin: 0;
-          padding: 0;
         }
       }
     }
