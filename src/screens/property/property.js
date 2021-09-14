@@ -111,7 +111,7 @@ const Property = () => {
                   <div className="grid">
                     {property.amenities &&
                       property.amenities.map((item) => {
-                        return <p>{item.name && item.name}</p>;
+                        return <p key={item.name}>{item.name && item.name}</p>;
                       })}
                   </div>
                 </div>
@@ -238,7 +238,7 @@ const Property = () => {
                 <div className="grid">
                   {property.amenities &&
                     property.amenities.map((item) => {
-                      return <p>{item.name && item.name}</p>;
+                      return <p key={item.name}>{item.name && item.name}</p>;
                     })}
                 </div>
               </div>

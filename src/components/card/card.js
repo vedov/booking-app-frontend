@@ -12,7 +12,7 @@ const Card = (props) => {
           <div className="card-title">
             {props.name && <h5>{props.name}</h5>}
             {props.description && <p>{props.description}</p>}
-            {location && <p>{location}</p>}
+            {props.address && props.city && <p>{location}</p>}
             {props.numberOfGuests && <p>{props.numberOfGuests}</p>}
             {props.pricePerNight && <h6>$ {props.pricePerNight} per Night</h6>}
             {props.dateStart && props.dateEnd && (
@@ -26,7 +26,7 @@ const Card = (props) => {
           <div className="card-title">
             {props.name && <h5>{props.name}</h5>}
             {props.description && <p>{props.description}</p>}
-            {location && <p>{location}</p>}
+            {props.address && props.city && <p>{location}</p>}
             {props.numberOfGuests && <p>{props.numberOfGuests}</p>}
             {props.pricePerNight && <h6>$ {props.pricePerNight} per Night</h6>}
             {props.dateStart && props.dateEnd && (
@@ -40,7 +40,7 @@ const Card = (props) => {
           <div className="card-title">
             {props.name && <h5>{props.name}</h5>}
             {props.description && <p>{props.description}</p>}
-            {location && <p>{location}</p>}
+            {props.address && props.city && <p>{location}</p>}
             {props.numberOfGuests && <p>{props.numberOfGuests}</p>}
             {props.pricePerNight && <h6>$ {props.pricePerNight} per Night</h6>}
             {props.dateStart && props.dateEnd && (

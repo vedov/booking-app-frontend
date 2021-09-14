@@ -22,7 +22,7 @@ const UserDashboard = () => {
   // DODATI REZERVACIJE KORISNIKA
   const [userProperties, setUserProperties] = useState([]);
   const [userReservations, setUserReservations] = useState([]);
-  const [reservation, setReservation] = useState({});
+
   const userID = jwtDecode(localStorage.getItem("token")).user.id;
   const fetchUserPropertiesAndReservations = async () => {
     return await axios
@@ -37,20 +37,30 @@ const UserDashboard = () => {
         }
       )
       .then((res) => {
-        let array = [];
-        let allReservations = [];
-        res.data.properties.forEach((element) => {
-          array.push(element.reservations);
+        let arrayReservations = [];
+        let valid = false;
+        console.log(res.data);
+        res.data.reservations.forEach((element) => {
+          const object = {
+            propertyId: element.property._id,
+            dateStart: element.dateStart,
+            dateEnd: element.dateEnd,
+            numberOfGuests: element.numberOfGuests,
+            image: element.property.imageUrls[0],
+            name: element.property.name,
+            pricePerNight: element.property.pricePerNight,
+          };
+          arrayReservations.push(object);
         });
-        array.forEach((element) => {
-          element.forEach((booking) => {
-            if (booking.guest === userID) allReservations.push(booking);
-            console.log(booking);
+        console.log(arrayReservations);
+        /* arrayReservations.forEach((booking) => {
+          booking.forEach((element) => {
+            if (element.guest === userID) valid = true;
           });
-        });
+          if (valid) allReservations.push(booking);
+        }); */
         setUserProperties(res.data.properties);
-        setUserReservations(allReservations);
-        console.log(allReservations);
+        setUserReservations(arrayReservations);
       });
   };
 
@@ -107,37 +117,41 @@ const UserDashboard = () => {
               <h5 className="greeting"> Your Properties</h5>
               <div className="dashboard-cards">
                 {userProperties &&
-                  userProperties.map((item) => {
+                  userProperties.map((item, index) => {
                     return (
-                      <>
-                        <Card
-                          id={item._id}
-                          name={item.name}
-                          description={item.propertyType.description}
-                          address={item.location.address}
-                          city={item.location.city}
-                          pricePerNight={item.pricePerNight}
-                          image={item.imageUrls[0]}
-                        ></Card>
-                      </>
+                      <Card
+                        id={item._id}
+                        name={item.name}
+                        description={item.propertyType.description}
+                        address={item.location.address}
+                        city={item.location.city}
+                        pricePerNight={item.pricePerNight}
+                        image={item.imageUrls[0]}
+                        key={index}
+                      ></Card>
                     );
                   })}
               </div>
               <h5 className="greeting"> Your Bookings</h5>
               <div className="dashboard-cards">
                 {userReservations &&
-                  userReservations.map((item) => {
+                  userReservations.map((item, index) => {
+                    const dateStart = item.dateStart.slice(0, 10);
+                    const dateEnd = item.dateEnd.slice(0, 10);
+                    const name = "AAAA";
                     return (
-                      <>
-                        <Card
-                          id={item.property}
-                          dateStart={"Dates: " + item.dateStart}
-                          dateEnd={item.dateEnd}
-                          numberOfGuests={
-                            "Number Of Guests: " + item.numberOfGuests
-                          }
-                        ></Card>
-                      </>
+                      <Card
+                        id={item.propertyId}
+                        name={item.name}
+                        image={item.image}
+                        dateStart={"Dates: " + dateStart}
+                        dateEnd={dateEnd}
+                        numberOfGuests={
+                          "Number Of Guests: " + item.numberOfGuests
+                        }
+                        pricePerNight={item.pricePerNight}
+                        key={index}
+                      ></Card>
                     );
                   })}
               </div>

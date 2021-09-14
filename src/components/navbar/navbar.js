@@ -5,7 +5,11 @@ import NavLink from "../navLink/navLink";
 const Navbar = () => {
   return (
     <div className="navbar-wrapper">
-      <div className="left"></div>
+      <div className="left">
+        <Link to="/">
+          <Button variant="3">Home</Button>
+        </Link>
+      </div>
       <div className="right">
         {localStorage.getItem("token") ? (
           <>
